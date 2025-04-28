@@ -3,6 +3,9 @@
 # Student IDs: <150150703, 150200013>
 
 
+### MEDUM LEVEL PROBLEMS ###
+
+
 # fib (task_id: HumanEval/55)
 
 def fib(n: int):
@@ -383,6 +386,8 @@ return "YES"
 >> > intersection((-10, 0), (0, 10))
 'NO'
 
+
+### HARD LEVEL PROBLEMS ###
 
 
 # total_match (task_id: HumanEval/74)
