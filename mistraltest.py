@@ -1,6 +1,9 @@
 # @Authors
-# Student Names: <Almila Duru Kavak>
-# Student IDs: <150150703>
+# Student Names: <Almila Duru Kavak, Umut Ural>
+# Student IDs: <150150703, 150200013>
+
+### MEDIUM LEVEL PROBLEMS ###
+
 
 #fib (task_id: HumanEval/55)
 def fib(n: int):
@@ -330,3 +333,360 @@ print(intersection((1, 2), (2, 3)))  # Output: "NO"
 print(intersection((-1, 1), (0, 4)))  # Output: "NO"
 print(intersection((-3, -1), (-5, 5)))  # Output: "YES"
 
+
+### HARD LEVEL PROBLEMS ###
+
+# total_match (task_id: HumanEval/74)
+def total_match(lst1, lst2):
+    # Calculate the total number of characters in lst1
+    total_chars_lst1 = sum(len(s) for s in lst1)
+
+    # Calculate the total number of characters in lst2
+    total_chars_lst2 = sum(len(s) for s in lst2)
+
+    # Compare the totals and return the appropriate list
+    if total_chars_lst1 <= total_chars_lst2:
+        return lst1
+    else:
+        return lst2
+def test_total_match():
+    # Test case 1: lst1 has fewer total characters than lst2
+    lst1 = ["apple", "banana"]
+    lst2 = ["cherry", "date", "elderberry"]
+    assert total_match(lst1, lst2) == lst1, "Test case 1 failed"
+
+    # Test case 2: lst2 has fewer total characters than lst1
+    lst1 = ["grapefruit", "honeydew"]
+    lst2 = ["kiwi", "lemon"]
+    assert total_match(lst1, lst2) == lst2, "Test case 2 failed"
+
+    # Test case 3: lst1 and lst2 have the same total number of characters
+    lst1 = ["mango", "nectarine"]
+    lst2 = ["orange", "pear"]
+    assert total_match(lst1, lst2) == lst1, "Test case 3 failed"
+
+    print("All test cases passed!")
+
+# will_it_fly (task_id: HumanEval/72)
+def will_it_fly(q, w):
+    # Check if the list is balanced (palindromic)
+    if q != q[::-1]:
+        return False
+
+    # Check if the sum of the elements is less than or equal to the maximum weight
+    if sum(q) > w:
+        return False
+
+    # If both conditions are met, the object will fly
+    return True
+def test_will_it_fly():
+    # Test case 1: Balanced list with sum less than or equal to the maximum weight
+    q1 = [1, 2, 3, 2, 1]
+    w1 = 10
+    assert will_it_fly(q1, w1) == True, "Test case 1 failed"
+
+    # Test case 2: Unbalanced list
+    q2 = [1, 2, 3, 4, 5]
+    w2 = 15
+    assert will_it_fly(q2, w2) == False, "Test case 2 failed"
+
+    # Test case 3: Balanced list with sum greater than the maximum weight
+    q3 = [2, 3, 4, 3, 2]
+    w3 = 10
+    assert will_it_fly(q3, w3) == False, "Test case 3 failed"
+
+# circular_shift (task_id: HumanEval/65)
+def circular_shift(x, shift):
+    """
+    Circular shift the digits of the integer x, shift the digits right by shift
+    and return the result as a string.
+    If shift > number of digits, return digits reversed.
+
+    >>> circular_shift(12, 1)
+    '21'
+    >>> circular_shift(12, 2)
+    '12'
+    """
+    # Convert the integer to a string to manipulate its digits
+    x_str = str(x)
+    num_digits = len(x_str)
+
+    # If shift is greater than the number of digits, return the digits reversed
+    if shift > num_digits:
+        return x_str[::-1]
+
+    # Perform the circular shift
+    shift = shift % num_digits  # In case shift is greater than the number of digits
+    shifted_str = x_str[-shift:] + x_str[:-shift]
+
+    return shifted_str
+def test_circular_shift():
+    # Test case 1: Shift the digits of 12345 by 2 positions to the right
+    assert circular_shift(12345, 2) == '45123', f"Test case 1 failed: {circular_shift(12345, 2)}"
+
+    # Test case 2: Shift the digits of 6789 by 5 positions to the right (should reverse the digits)
+    assert circular_shift(6789, 5) == '9876', f"Test case 2 failed: {circular_shift(6789, 5)}"
+
+    # Test case 3: Shift the digits of 123456789 by 3 positions to the right
+    assert circular_shift(123456789, 3) == '789123456', f"Test case 3 failed: {circular_shift(123456789, 3)}"
+
+    print("All test cases passed!")
+
+# reverse_delete (task_id: HumanEval/112)
+def reverse_delete(s, c):
+    # Step 1: Remove all characters from s that are in c
+    result = ''.join([char for char in s if char not in c])
+
+    # Step 2: Check if the result string is a palindrome
+    is_palindrome = (result == result[::-1])
+
+    # Step 3: Return the result string and the palindrome check
+    return (result, is_palindrome)
+def test_reverse_delete():
+    # Test case 1: String becomes a palindrome after removing specified characters
+    s1 = "racecar"
+    c1 = "ae"
+    assert reverse_delete(s1, c1) == ("rcr", False)
+
+    # Test case 2: String does not become a palindrome after removing specified characters
+    s2 = "hello"
+    c2 = "aeiou"
+    assert reverse_delete(s2, c2) == ("hll", False)
+
+    # Test case 3: Edge case with an empty string
+    s3 = ""
+    c3 = "aeiou"
+    assert reverse_delete(s3, c3) == ("", True)
+
+    print("All test cases passed!")
+
+# minPath (task_id: HumanEval/129)
+from collections import deque
+def minPath(grid, k):
+    N = len(grid)
+    directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]  # Up, Down, Left, Right
+
+    def is_valid(x, y):
+        return 0 <= x < N and 0 <= y < N
+
+    min_path = None
+
+    for i in range(N):
+        for j in range(N):
+            queue = deque([(i, j, [grid[i][j]])])
+
+            while queue:
+                x, y, path = queue.popleft()
+
+                if len(path) == k:
+                    if min_path is None or tuple(path) < tuple(min_path):
+                        min_path = path
+                    continue
+
+                for dx, dy in directions:
+                    nx, ny = x + dx, y + dy
+                    if is_valid(nx, ny):
+                        queue.append((nx, ny, path + [grid[nx][ny]]))
+
+    return min_path
+def test_minPath():
+    # Test case 1: Simple 2x2 grid with k=2
+    grid1 = [
+        [1, 2],
+        [3, 4]
+    ]
+    k1 = 2
+    expected1 = [1, 2]
+    assert minPath(grid1, k1) == expected1, f"Test case 1 failed: expected {expected1}, got {minPath(grid1, k1)}"
+
+    # Test case 2: 3x3 grid with k=3
+    grid2 = [
+        [5, 6, 7],
+        [8, 1, 2],
+        [3, 4, 9]
+    ]
+    k2 = 3
+    expected2 = [1, 2, 9]
+    assert minPath(grid2, k2) == expected2, f"Test case 2 failed: expected {expected2}, got {minPath(grid2, k2)}"
+
+    # Test case 3: 4x4 grid with k=4
+    grid3 = [
+        [10, 11, 12, 13],
+        [14, 15, 16, 17],
+        [18, 19, 20, 21],
+        [22, 23, 24, 25]
+    ]
+    k3 = 4
+    expected3 = [10, 11, 12, 13]
+    assert minPath(grid3, k3) == expected3, f"Test case 3 failed: expected {expected3}, got {minPath(grid3, k3)}"
+
+    print("All test cases passed!")
+
+# move_one_ball (task_id: HumanEval/109)
+def move_one_ball(arr):
+    # If the array is empty, return True
+    if not arr:
+        return True
+
+    n = len(arr)
+
+    # Check if the array is already sorted
+    if arr == sorted(arr):
+        return True
+
+    # Find the point where the array can be split
+    for i in range(1, n):
+        if arr[i] < arr[i - 1]:
+            # Rotate the array at this point
+            rotated_arr = arr[i:] + arr[:i]
+            # Check if the rotated array is sorted
+            if rotated_arr == sorted(rotated_arr):
+                return True
+            else:
+                return False
+
+    # If no such point is found, return False
+    return False
+def test_move_one_ball():
+    # Test case 1: Array is already sorted
+    arr1 = [1, 2, 3, 4, 5]
+    assert move_one_ball(arr1) == True, "Test case 1 failed"
+
+    # Test case 2: Array can be sorted by moving one element
+    arr2 = [3, 4, 5, 1, 2]
+    assert move_one_ball(arr2) == True, "Test case 2 failed"
+
+    # Test case 3: Array cannot be sorted by moving one element
+    arr3 = [3, 2, 1, 5, 4]
+    assert move_one_ball(arr3) == False, "Test case 3 failed"
+
+    print("All test cases passed!")
+
+# Strongest_Extension (task_id: HumanEval/153)
+def Strongest_Extension(class_name, extensions):
+    def calculate_strength(extension):
+        CAP = sum(1 for char in extension if char.isupper())
+        SM = sum(1 for char in extension if char.islower())
+        return CAP - SM
+
+    strongest_extension = extensions[0]
+    max_strength = calculate_strength(strongest_extension)
+
+    for extension in extensions[1:]:
+        strength = calculate_strength(extension)
+        if strength > max_strength:
+            strongest_extension = extension
+            max_strength = strength
+
+    return f"{class_name}.{strongest_extension}"
+def test_Strongest_Extension():
+    # Test case 1: Basic test with mixed case extensions
+    class_name = "ExampleClass"
+    extensions = ["ExtensionONE", "extensionTWO", "EXTENSIONthree", "extFOUR"]
+    assert Strongest_Extension(class_name, extensions) == "ExampleClass.EXTENSIONthree"
+
+    # Test case 2: All extensions have the same strength
+    class_name = "TestClass"
+    extensions = ["AbC", "XyZ", "Def"]
+    assert Strongest_Extension(class_name, extensions) == "TestClass.AbC"
+
+    # Test case 3: Extensions with varying strengths
+    class_name = "SampleClass"
+    extensions = ["aBcDeF", "GhIjKl", "mNoPqRs", "TuvWxYz"]
+    assert Strongest_Extension(class_name, extensions) == "SampleClass.TuvWxYz"
+
+    print("All test cases passed!")
+
+# right_angle_triangle (task_id: HumanEval/157)
+def right_angle_triangle(a, b, c):
+    '''
+    Given the lengths of the three sides of a triangle. Return True if the three
+    sides form a right-angled triangle, False otherwise.
+    A right-angled triangle is a triangle in which one angle is right angle or
+    90 degree.
+    Example:
+    right_angle_triangle(3, 4, 5) == True
+    right_angle_triangle(1, 2, 3) == False
+    '''
+    # Sort the sides so that the largest side is always compared as the hypotenuse
+    sides = sorted([a, b, c])
+    return sides[0]**2 + sides[1]**2 == sides[2]**2
+def test_right_angle_triangle():
+    # Test case 1: Known right-angled triangle
+    assert right_angle_triangle(3, 4, 5) == True, "Test case 1 failed"
+
+    # Test case 2: Non-right-angled triangle
+    assert right_angle_triangle(1, 2, 3) == False, "Test case 2 failed"
+
+    # Test case 3: Another right-angled triangle
+    assert right_angle_triangle(5, 12, 13) == True, "Test case 3 failed"
+
+    print("All test cases passed!")
+# do_algebra (task_id: HumanEval/160)
+def do_algebra(operator, operand):
+    # Initialize the result with the first operand
+    result = operand[0]
+
+    # Iterate through the operators and operands
+    for i in range(len(operator)):
+        op = operator[i]
+        num = operand[i + 1]
+
+        # Perform the operation based on the operator
+        if op == '+':
+            result += num
+        elif op == '-':
+            result -= num
+        elif op == '*':
+            result *= num
+        elif op == '//':
+            result //= num
+        elif op == '**':
+            result **= num
+
+    return result
+def test_do_algebra():
+    # Test case 1: Basic arithmetic operations
+    operator1 = ['+', '-', '*']
+    operand1 = [2, 3, 4, 5]
+    assert do_algebra(operator1, operand1) == 2, "Test case 1 failed"
+
+    # Test case 2: Exponentiation and integer division
+    operator2 = ['**', '//']
+    operand2 = [2, 3, 4]
+    assert do_algebra(operator2, operand2) == 16, "Test case 2 failed"
+
+    # Test case 3: Mixed operations
+    operator3 = ['+', '*', '-']
+    operand3 = [1, 2, 3, 4]
+    assert do_algebra(operator3, operand3) == -1, "Test case 3 failed"
+
+    print("All test cases passed!")
+
+# decode_cyclic (task_id: HumanEval/38)
+def decode_cyclic(s: str) -> str:
+    """
+    Takes as input a string encoded with the encode_cyclic function and returns the decoded string.
+    """
+    # Split string into groups. Each of length 3.
+    groups = [s[(3 * i):min((3 * i + 3), len(s))] for i in range((len(s) + 2) // 3)]
+    # Cycle elements in each group back to their original positions. Unless group has fewer elements than 3.
+    groups = [(group[-1] + group[:-1]) if len(group) == 3 else group for group in groups]
+    return "".join(groups)
+def test_decode_cyclic():
+    # Test case 1: String length is a multiple of 3
+    encoded_str1 = "bcaefd"
+    expected_decoded_str1 = "abcdef"
+    assert decode_cyclic(encoded_str1) == expected_decoded_str1, f"Test case 1 failed: {decode_cyclic(encoded_str1)}"
+
+    # Test case 2: String length is not a multiple of 3
+    encoded_str2 = "cabdef"
+    expected_decoded_str2 = "abcdef"
+    assert decode_cyclic(encoded_str2) == expected_decoded_str2, f"Test case 2 failed: {decode_cyclic(encoded_str2)}"
+
+    # Test case 3: Empty string
+    encoded_str3 = ""
+    expected_decoded_str3 = ""
+    assert decode_cyclic(encoded_str3) == expected_decoded_str3, f"Test case 3 failed: {decode_cyclic(encoded_str3)}"
+
+    print("All test cases passed!")
