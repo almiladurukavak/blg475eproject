@@ -284,7 +284,7 @@ def test_intersection(interval1, interval2):
             return "NO"
 
     return "YES"
- 
+
 
 ### HARD LEVEL PROBLEMS ###
 
