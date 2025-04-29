@@ -65,3 +65,110 @@ def test_add():
     assert add(-1, -1) == -2
     assert add(0, 0) == 0
     print("All test cases for add passed!")
+
+
+##Almila Duru Kavak
+
+##MODERATE LEVEL PROBLEMS
+
+def test_fib():
+    assert fib(3) == 2
+    assert fib(5) == 5
+    assert fib(7) == 13
+    print("All test cases for fib passed!")
+
+def test_common():
+    assert common([1, 2, 3], [3, 2, 1]) == [1, 2, 3]
+    assert common([1, 2, 3, 4], [5, 6, 7, 8]) == []
+    assert common(['a', 'b', 'c'], ['b', 'c', 'd']) == ['b', 'c']
+    print("All test cases for common passed!")
+
+
+def test_even_odd_palindrome():
+    assert even_odd_palindrome(5) == (2, 3)
+    assert even_odd_palindrome(15) == (4, 7)
+    assert even_odd_palindrome(20) == (6, 9)
+    print("All test cases for even_odd_palindrome passed!")
+
+
+def test_sum_squares():
+    assert sum_squares([1, 2, 3]) == 6
+    assert sum_squares([]) == 0
+    assert sum_squares([-1, -5, 2, -1, -5]) == -126
+    assert sum_squares([1, 2, 3, 4, 5, 6]) == 50
+    assert sum_squares([1, 2, 3, 4, 5, 6, 7, 8]) == 130
+    print("All test cases for sum_squares passed!")
+
+
+def test_specialFilter():
+    assert specialFilter([15, -73, 14, -15]) == 1
+    assert specialFilter([33, -2, -3, 45, 21, 109]) == 2
+    assert specialFilter([11, 22, 33, 44, 55]) == 1
+    assert specialFilter([13, 24, 35, 46, 57]) == 3
+    assert specialFilter([111, 222, 333, 444, 555]) == 1
+    print("All test cases for specialFilter passed!")
+
+def test_is_bored():
+    assert is_bored("Hello world") == 0
+    assert is_bored("The sky is blue. The sun is shining. I love this weather") == 1
+    assert is_bored("I am bored!") == 1
+    assert is_bored("Are you bored? I am.") == 1
+    assert is_bored("I think so. Really?") == 1
+    assert is_bored("I am. I am too!") == 2
+    assert is_bored("I begin. What about you?") == 1
+    assert is_bored("End of story.") == 0
+    assert is_bored("I?") == 1
+    assert is_bored("I!") == 1
+    assert is_bored(" I am first.") == 0 # Başında boşluk var
+    assert is_bored("I am. Then I go!") == 2
+    print("All test cases for is_bored passed!")
+
+
+def test_encrypt():
+    assert encrypt('hi') == 'lm'
+    assert encrypt('asdfghjkl') == 'ewhjklnop'
+    assert encrypt('gf') == 'kj'
+    assert encrypt('et') == 'ix'
+    assert encrypt('abc') == 'efg'
+    assert encrypt('xyz') == 'bcd'
+    assert encrypt('aBcDeFg') == 'eFgHiJk'
+    assert encrypt('123abcXYZ') == '123efgBCD'
+    print("All test cases for encrypt passed!")
+
+
+
+def test_rounded_avg():
+    assert rounded_avg(1, 5) == "0b11"
+    assert rounded_avg(7, 5) == -1
+    assert rounded_avg(10, 20) == "0b1111"
+    assert rounded_avg(20, 33) == "0b11010"
+    assert rounded_avg(1, 1) == "0b1"
+    assert rounded_avg(2, 4) == "0b10"
+    assert rounded_avg(3, 6) == "0b100"
+    assert rounded_avg(1, 2) == "0b10"
+    assert rounded_avg(2, 3) == "0b10"
+    print("All test cases for rounded_avg passed!")
+
+def test_minSubArraySum():
+    assert minSubArraySum([2, 3, 4, 1, 2, 4]) == 1
+    assert minSubArraySum([-1, -2, -3]) == -6
+    assert minSubArraySum([-2, 1, -3, 4, -1, 2, 1, -5, 4]) == -5
+    assert minSubArraySum([1, -1, -2, 1]) == -2
+    assert minSubArraySum([-5]) == -5
+    assert minSubArraySum([5]) == 5
+    assert minSubArraySum([0, -1, 2]) == -1
+    print("All test cases for minSubArraySum passed!")
+
+
+def test_intersection_function():
+    assert intersection((1, 2), (2, 3)) == "NO"
+    assert intersection((-1, 1), (0, 4)) == "NO"
+    assert intersection((-3, -1), (-5, 5)) == "YES"
+    assert intersection((1, 5), (2, 3)) == "YES"
+    assert intersection((1, 5), (5, 8)) == "NO"
+    assert intersection((1, 10), (1, 10)) == "YES"
+    assert intersection((0, 0), (0, 0)) == "NO"
+    assert intersection((0, 1), (2, 3)) == "NO"
+    assert intersection((0, 3), (1, 5)) == "YES"
+    assert intersection((-5, -2), (-4, -1)) == "YES"
+    print("All test cases for intersection passed!")

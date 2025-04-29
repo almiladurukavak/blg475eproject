@@ -93,12 +93,14 @@ def sum_to_n(n: int):
 def add(x: int, y: int):
     return x + y
 
+
+##Almila Duru Kavak
 ### MEDUM LEVEL PROBLEMS ###
 
 
 # fib (task_id: HumanEval/55)
 
-def test_fib(n: int):
+def fib(n: int):
     """Return n-th Fibonacci number.
     >>> fib(10)
     55
@@ -123,7 +125,7 @@ def test_fib(n: int):
 
 # common (task_id: HumanEval/58)
 
-def test_common(l1: list, l2: list):
+def common(l1: list, l2: list):
     """Return sorted unique common elements for two lists.
     >>> common([1, 4, 3, 34, 653, 2, 5], [5, 7, 1, 5, 9, 653, 121])
     [1, 5, 653]
@@ -144,7 +146,7 @@ def test_common(l1: list, l2: list):
 
 # even_odd_palindrome (task_id: HumanEval/107)
 
-def test_even_odd_palindrome(n):
+def even_odd_palindrome(n):
     """
     Given a positive integer n, return a tuple that has the number of even and odd
     integer palindromes that fall within the range(1, n), inclusive.
@@ -181,7 +183,7 @@ def test_even_odd_palindrome(n):
 
 # sum_squares (task_id: HumanEval/142)
 
-def test_sum_squares(lst):
+def sum_squares(lst):
     """"
     This function will take a list of integers. For all entries in the list, the function shall square the integer entry if its index is a
     multiple of 3 and will cube the integer entry if its index is a multiple of 4 and not a multiple of 3. The function will not
@@ -203,7 +205,7 @@ def test_sum_squares(lst):
     return total_sum
 
 # specialFilter (task_id: HumanEval/146)
-def test_specialFilter(nums):
+def specialFilter(nums):
     """Write a function that takes an array of numbers as input and returns
     the number of elements in the array that are greater than 10 and both
     first and last digits of a number are odd (1, 3, 5, 7, 9).
@@ -260,7 +262,7 @@ def is_bored(S):
 
 # encrypt (task_id: HumanEval/89)
 
-def test_encrypt(s):
+def encrypt(s):
     """Create a function encrypt that takes a string as an argument and
     returns a string encrypted with the alphabet being rotated.
     The alphabet should be rotated in a manner such that the letters
@@ -286,7 +288,7 @@ def test_encrypt(s):
 # rounded_avg (task_id: HumanEval/103)
 
 
-def test_rounded_avg(n, m):
+def rounded_avg(n, m):
     """You are given two positive integers n and m, and your task is to compute the
     average of the integers from n through m (including n and m).
     Round the answer to the nearest integer and convert that to binary.
@@ -307,7 +309,7 @@ def test_rounded_avg(n, m):
 
 # minSubArraySum (task_id: HumanEval/114)
 
-def test_minSubArraySum(nums):
+def minSubArraySum(nums):
     """
     Given an array of integers nums, find the minimum sum of any non-empty sub-array
     of nums.
@@ -329,7 +331,7 @@ def test_minSubArraySum(nums):
 
 # intersection (task_id: HumanEval/127)
 
-def test_intersection(interval1, interval2):
+def intersection(interval1, interval2):
     """You are given two intervals,
     where each interval is a pair of integers. For example, interval = (start, end) = (1, 2).
     The given intervals are closed which means that the interval (start, end)
