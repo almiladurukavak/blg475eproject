@@ -1,6 +1,140 @@
 # @Authors
-# Student Names: <Almila Duru Kavak, Umut Ural>
-# Student IDs: <150150703, 150200013>
+# Student Names: <Almila Duru Kavak, Aydan Günaydın, Umut Ural>
+# Student IDs: <150150703, 150200012 150200013>
+
+### EASY LEVEL PROBLEMS ###
+# make_palindrome (task_id: HumanEval/10)
+def is_palindrome(string: str) -> bool:
+    """Test if given string is a palindrome"""
+    return string == string[::-1]
+
+def make_palindrome(string: str) -> str:
+    """Find the shortest palindrome that begins with a supplied string.
+    Algorithm idea is simple:
+    - Find the longest postfix of supplied string that is a palindrome.
+    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.
+    """
+    if not string:
+        return string
+
+    # Find the longest palindromic suffix
+    for i in range(len(string)):
+        if is_palindrome(string[i:]):
+            # The prefix that comes before the palindromic suffix
+            prefix = string[:i]
+            # Reverse the prefix and append it to the end of the string
+            return string + prefix[::-1]
+
+    return string
+
+# truncate_number (task_id: HumanEval/2)
+def truncate_number(number: float) -> float:
+    """
+    Given a positive floating point number, it can be decomposed into
+    an integer part (largest integer smaller than given number) and decimals
+    (leftover part always smaller than 1).
+
+    Return the decimal part of the number.
+    >>> truncate_number(3.5)
+    0.5
+    """
+    # Ensure the number is positive
+    if number < 0:
+        raise ValueError("The number must be positive")
+
+    # Extract the decimal part
+    decimal_part = number - int(number)
+    return decimal_part
+
+# sum_product (task_id: HumanEval/8)
+from typing import List, Tuple
+
+def sum_product(numbers: List[int]) -> Tuple[int, int]:
+    """
+    For a given list of integers, return a tuple consisting of a sum and a product of all the integers in a list.
+    Empty sum should be equal to 0 and empty product should be equal to 1.
+    >>> sum_product([])
+    (0, 1)
+    >>> sum_product([1, 2, 3, 4])
+    (10, 24)
+    """
+    if not numbers:
+        return (0, 1)
+
+    total_sum = sum(numbers)
+    total_product = 1
+    for number in numbers:
+        total_product *= number
+
+    return (total_sum, total_product)
+
+# greatest_common_divisor (task_id: HumanEval/13)
+def greatest_common_divisor(a: int, b: int) -> int:
+    """
+    Return the greatest common divisor of two integers a and b.
+    >>> greatest_common_divisor(3, 5)
+    1
+    >>> greatest_common_divisor(25, 15)
+    5
+    """
+    while b != 0:
+        a, b = b, a % b
+    return a
+
+# strlen (task_id: HumanEval/23)
+def strlen(string: str) -> int:
+    """
+    Return the length of the given string.
+    >>> strlen('')
+    0
+    >>> strlen('abc')
+    3
+    """
+    return len(string)
+
+# max_element (task_id: HumanEval/35)
+def max_element(l: list) -> int:
+    """
+    Return the maximum element in the list.
+    >>> max_element([1, 2, 3])
+    3
+    >>> max_element([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10])
+    123
+    """
+    if not l:
+        raise ValueError("The list is empty")
+
+    return max(l)
+
+# incr_list (task_id: HumanEval/42)
+def incr_list(l: list) -> list:
+    return [x + 1 for x in l]
+
+# median (task_id: HumanEval/47)
+def median(l: list) -> float:
+    if not l:
+        raise ValueError("The list is empty")
+
+    sorted_list = sorted(l)
+    n = len(sorted_list)
+    mid = n // 2
+
+    if n % 2 == 1:
+        return float(sorted_list[mid])
+    else:
+        return (sorted_list[mid - 1] + sorted_list[mid]) / 2
+
+# sum_to_n (task_id: HumanEval/60)
+def sum_to_n(n: int) -> int:
+    if n < 1:
+        raise ValueError("n must be a positive integer")
+
+    return n * (n + 1) // 2
+
+# add (task_id: HumanEval/53)
+
+def add(x: int, y: int) -> int:
+    return x + y
 
 ### MEDIUM LEVEL PROBLEMS ###
 

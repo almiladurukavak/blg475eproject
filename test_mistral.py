@@ -1,10 +1,130 @@
 # @Authors
-# Student Names: <Almila Duru Kavak, Umut Ural>
-# Student IDs: <150150703, 150200013>
+# Student Names: <Almila Duru Kavak, Aydan Günaydın, Umut Ural>
+# Student IDs: <150150703, 150200012, 150200013>
 
 from chatgpt import *
 
+### EASY LEVEL PROBLEMS ###
+def test_make_palindrome():
+    # Test Case 1: Empty String
+    assert make_palindrome("") == "", "Test Case 1 Failed"
 
+    # Test Case 2: Single Character String
+    assert make_palindrome("a") == "a", "Test Case 2 Failed"
+
+    # Test Case 3: Non-Palindromic String
+    assert make_palindrome("race") == "racecar", "Test Case 3 Failed"
+
+    print("All test cases passed!")
+
+def test_truncate_number():
+    # Test Case 1: Positive Floating Point Number
+    assert truncate_number(3.5) == 0.5, "Test Case 1 Failed"
+
+    # Test Case 2: Whole Number
+    assert truncate_number(7.0) == 0.0, "Test Case 2 Failed"
+
+    # Test Case 3: Floating Point Number with Small Decimal Part
+    assert truncate_number(4.99) == 0.99, "Test Case 3 Failed"
+
+    print("All test cases passed!")
+
+def test_sum_product():
+    # Test Case 1: Empty List
+    assert sum_product([]) == (0, 1), "Test Case 1 Failed"
+
+    # Test Case 2: List with Positive Integers
+    assert sum_product([1, 2, 3, 4]) == (10, 24), "Test Case 2 Failed"
+
+    # Test Case 3: List with Negative and Positive Integers
+    assert sum_product([-1, 2, -3, 4]) == (2, 24), "Test Case 3 Failed"
+
+    print("All test cases passed!")
+
+def test_greatest_common_divisor():
+    # Test Case 1: Coprime Numbers
+    assert greatest_common_divisor(3, 5) == 1, "Test Case 1 Failed"
+
+    # Test Case 2: Numbers with a Common Divisor
+    assert greatest_common_divisor(25, 15) == 5, "Test Case 2 Failed"
+
+    # Test Case 3: One Number is Zero
+    assert greatest_common_divisor(0, 7) == 7, "Test Case 3 Failed"
+
+    print("All test cases passed!")
+
+def test_strlen():
+    # Test Case 1: Empty String
+    assert strlen('') == 0, "Test Case 1 Failed"
+
+    # Test Case 2: Non-Empty String
+    assert strlen('abc') == 3, "Test Case 2 Failed"
+
+    # Test Case 3: String with Spaces and Special Characters
+    assert strlen('Hello, World!') == 13, "Test Case 3 Failed"
+
+    print("All test cases passed!")
+
+def test_max_element():
+    # Test Case 1: List with Positive Integers
+    assert max_element([1, 2, 3]) == 3, "Test Case 1 Failed"
+
+    # Test Case 2: List with Mixed Positive and Negative Integers
+    assert max_element([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10]) == 123, "Test Case 2 Failed"
+
+    # Test Case 3: List with Duplicate Maximum Values
+    assert max_element([7, 7, 7, 1, 2]) == 7, "Test Case 3 Failed"
+
+    print("All test cases passed!")
+
+def test_incr_list():
+    # Test Case 1: List with Positive Integers
+    assert incr_list([1, 2, 3]) == [2, 3, 4], "Test Case 1 Failed"
+
+    # Test Case 2: List with Mixed Positive and Negative Integers
+    assert incr_list([5, 3, 5, 2, 3, 3, 9, 0, 123]) == [6, 4, 6, 3, 4, 4, 10, 1, 124], "Test Case 2 Failed"
+
+    # Test Case 3: List with Negative Integers
+    assert incr_list([-1, -2, -3]) == [0, -1, -2], "Test Case 3 Failed"
+
+    print("All test cases passed!")
+
+def test_median():
+    # Test Case 1: Odd-length list
+    assert median([3, 1, 2, 4, 5]) == 3, "Test Case 1 Failed"
+
+    # Test Case 2: Even-length list
+    assert median([-10, 4, 6, 1000, 10, 20]) == 15.0, "Test Case 2 Failed"
+
+    # Test Case 3: List with negative and positive numbers
+    assert median([-5, -1, 0, 2, 3]) == 0, "Test Case 3 Failed"
+
+    print("All test cases passed!")
+
+def test_sum_to_n():
+    # Test Case 1
+    assert sum_to_n(30) == 465, "Test Case 1 Failed"
+
+    # Test Case 2
+    assert sum_to_n(100) == 5050, "Test Case 2 Failed"
+
+    # Test Case 3
+    assert sum_to_n(5) == 15, "Test Case 3 Failed"
+
+    print("All test cases passed!")
+
+def test_add():
+    # Test Case 1
+    assert add(2, 3) == 5, "Test Case 1 Failed"
+
+    # Test Case 2
+    assert add(5, 7) == 12, "Test Case 2 Failed"
+
+    # Additional Test Case 3: Negative Numbers
+    assert add(-1, -2) == -3, "Test Case 3 Failed"
+
+    print("All test cases passed!")
+    
 ### MEDIUM LEVEL PROBLEMS ###
 
 def test_fib():
