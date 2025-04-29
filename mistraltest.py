@@ -50,9 +50,7 @@ def common(l1: list, l2: list):
 
     return sorted_common_elements
 
-# Test cases
-print(common([1, 4, 3, 34, 653, 2, 5], [5, 7, 1, 5, 9, 653, 121]))  # Output: [1, 5, 653]
-print(common([5, 3, 2, 8], [3, 2]))  # Output: [2, 3]
+
 
 #even_odd_palindrome (task_id: HumanEval/107)
 
@@ -90,9 +88,7 @@ def even_odd_palindrome(n):
 
     return (even_count, odd_count)
 
-# Test cases
-print(even_odd_palindrome(3))   # Output: (1, 2)
-print(even_odd_palindrome(12))  # Output: (4, 6)
+
 
 #sum_squares (task_id: HumanEval/142)
 
@@ -119,10 +115,6 @@ def sum_squares(lst):
 
     return sum(modified_list)
 
-# Test cases
-print(sum_squares([1, 2, 3]))  # Output: 6
-print(sum_squares([]))  # Output: 0
-print(sum_squares([-1, -5, 2, -1, -5]))  # Output: -126
 
 
 #specialFilter (task_id: HumanEval/146)
@@ -149,9 +141,6 @@ def specialFilter(nums):
 
     return count
 
-# Test cases
-print(specialFilter([15, -73, 14, -15]))  # Output: 1
-print(specialFilter([33, -2, -3, 45, 21, 109]))  # Output: 2
 
 
 #is_bored (task_id: HumanEval/91)
@@ -184,12 +173,6 @@ def is_bored(S):
 
     return boredom_count
 
-# Test cases
-print(is_bored("Hello world"))  # Output: 0
-print(is_bored("The sky is blue. The sun is shining. I love this weather"))  # Output: 1
-print(is_bored("I am bored. Are you? I think so!"))  # Output: 2
-print(is_bored("This is a test. I hope it works. I think it will!"))  # Output: 2
-
 
 
 #encrypt (task_id: HumanEval/89)
@@ -217,12 +200,6 @@ def encrypt(s):
 
     shift = 8
     return ''.join(shift_char(c, shift) for c in s)
-
-# Test cases
-print(encrypt('hi'))          # Output: 'pm'
-print(encrypt('asdfghjkl'))   # Output: 'iwoznpbts'
-print(encrypt('gf'))          # Output: 'on'
-print(encrypt('et'))          # Output: 'ma'
 
 
 #rounded_avg (task_id: HumanEval/103)
@@ -257,12 +234,6 @@ def rounded_avg(n, m):
 
     return binary_representation
 
-# Test cases
-print(rounded_avg(1, 5))   # Output: "0b11"
-print(rounded_avg(7, 5))   # Output: -1
-print(rounded_avg(10, 20)) # Output: "0b1111"
-print(rounded_avg(20, 33)) # Output: "0b11010"
-
 #minSubArraySum (task_id: HumanEval/114)
 
 
@@ -283,9 +254,6 @@ def minSubArraySum(nums):
         min_so_far = min(min_so_far, min_ending_here)
     return min_so_far
 
-# Test cases
-print(minSubArraySum([2, 3, 4, 1, 2, 4]))  # Output: 1
-print(minSubArraySum([-1, -2, -3]))  # Output: -6
 
 
 
@@ -328,10 +296,6 @@ def intersection(interval1, interval2):
     else:
         return "NO"
 
-# Test cases
-print(intersection((1, 2), (2, 3)))  # Output: "NO"
-print(intersection((-1, 1), (0, 4)))  # Output: "NO"
-print(intersection((-3, -1), (-5, 5)))  # Output: "YES"
 
 
 ### HARD LEVEL PROBLEMS ###
