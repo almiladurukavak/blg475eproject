@@ -172,3 +172,82 @@ def test_intersection_function():
     assert intersection((0, 3), (1, 5)) == "YES"
     assert intersection((-5, -2), (-4, -1)) == "YES"
     print("All test cases for intersection passed!")
+
+### HARD LEVEL PROBLEMS ###
+
+def test_total_match():
+  assert total_match([], []) == []
+  assert total_match(['hi', 'admin'], ['hI', 'Hi']) == ['hI', 'Hi']
+  assert total_match(['hi', 'admin'], ['hi', 'hi', 'admin', 'project']) == ['hi', 'admin']
+  assert total_match(['hi', 'admin'], ['hI', 'hi', 'hi']) == ['hI', 'hi', 'hi']
+  assert total_match(['4'], ['1', '2', '3', '4', '5']) == ['4']
+  assert total_match(['apple', 'banana'], ['kiwi', 'orange']) == ['kiwi', 'orange']
+  assert total_match(['one', 'two', 'three'], ['a', 'b', 'c', 'd', 'e']) == ['one', 'two', 'three']
+
+def test_will_it_fly():
+  assert will_it_fly([1, 2], 5) == False
+  assert will_it_fly([3, 2, 3], 1) == False
+  assert will_it_fly([3, 2, 3], 9) == True
+
+def test_circular_shift():
+  assert circular_shift(12, 1) == "21"
+  assert circular_shift(12345, 2) == "45123"
+  assert circular_shift(123, 5) == "321"
+
+def test_reverse_delete():
+  assert reverse_delete("abcde", "ae") == ('bcd', False)
+  assert reverse_delete("abcdef", "b") == ('acdef', False)
+  assert reverse_delete("abcdedcba", "ab") == ('cdedc', True)
+
+def test_minPath():
+  # Test case 1: Simple 2x2 grid, k=2
+  grid1 = [[1, 2], [3, 4]]
+  k1 = 2
+  expected1 = [1, 2]
+  assert minPath(grid1, k1) == expected1
+
+  # Test case 2: Larger grid with a longer path, k=3
+  grid2 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+  k2 = 3
+  result2 = minPath(grid2, k2)
+  assert len(result2) == k2
+  assert result2[0] in [1, 2, 4] # Starting from any cell in the first step is valid for a path of length 3
+
+  # Test case 3: Grid with all same values, k=4
+  grid3 = [[5, 5], [5, 5]]
+  k3 = 4
+  expected3 = [5, 5, 5, 5]
+  assert minPath(grid3, k3) == expected3
+
+def test_move_one_ball():
+  assert move_one_ball([1, 2, 3, 4, 5]) == True
+  assert move_one_ball([3, 4, 5, 1, 2]) == True
+  assert move_one_ball([1, 3, 2]) == False
+
+def test_strongest_extension():
+  assert Strongest_Extension('Slices', ['SErviNGSliCes', 'Cheese', 'StuFfed']) == 'Slices.SErviNGSliCes'
+  assert Strongest_Extension('my_class', ['AA', 'Be', 'CC']) == 'my_class.AA'
+  assert Strongest_Extension('Data', ['Process', 'AnalyzeData', 'Report']) == 'Data.AnalyzeData'
+
+def test_right_angle_triangle():
+  assert right_angle_triangle(3, 4, 5) == True
+  assert right_angle_triangle(1, 2, 3) == False
+  assert right_angle_triangle(5, 12, 13) == True
+
+def test_do_algebra():
+  operator1 = ['+', '*', '-']
+  operand1 = [2, 3, 4, 5]
+  assert do_algebra(operator1, operand1) == 9
+
+  operator2 = ['**', '//', '+']
+  operand2 = [2, 3, 10, 4]
+  assert do_algebra(operator2, operand2) == 10
+
+  operator3 = ['-', '+', '*']
+  operand3 = [10, 5, 2, 3]
+  assert do_algebra(operator3, operand3) == 21
+
+def test_decode_cyclic():
+  assert decode_cyclic("cba") == "abc"
+  assert decode_cyclic("defghi") == "abcdefghi"
+  assert decode_cyclic("jklmno") == "jklmno"
