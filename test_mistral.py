@@ -2,7 +2,7 @@
 # Student Names: <Almila Duru Kavak, Aydan Günaydın, Umut Ural>
 # Student IDs: <150150703, 150200012, 150200013>
 
-from chatgpt import *
+from mistraltest import *
 
 ### EASY LEVEL PROBLEMS ###
 def test_make_palindrome():
