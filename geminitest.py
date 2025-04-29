@@ -1,9 +1,97 @@
 # @Authors
 # Student Names: <Almila Duru Kavak, Aydan Günaydın, Umut Ural>
-# Student IDs: <150150703, 150200012 150200013>
-
+# Student IDs: <150150703, 150200012, 150200013>
 
 ### EASY LEVEL PROBLEMS ###
+from typing import List, Tuple
+
+#is_palindrome (task_id: HumanEval/10)
+def is_palindrome(string: str) -> bool:
+#Test if given string is a palindrome
+  return string == string[::-1]
+
+def make_palindrome(string: str) -> str:
+  n = len(string)
+  if n == 0:
+      return ""
+  for i in range(n - 1, -1, -1):
+      if is_palindrome(string[i:]):
+          prefix_to_reverse = string[:i]
+          return string + prefix_to_reverse[::-1]
+  return string + string[:-1][::-1]
+
+#truncate_number (task_id: HumanEval/2)
+def truncate_number(number: float) -> float:
+  return number - int(number)
+
+#sum_product (task_id: HumanEval/8)
+
+def sum_product(numbers: List[int]) -> Tuple[int, int]:
+    s = 0
+    p = 1
+    for number in numbers:
+        s += number
+        p *= number
+    return s, p
+
+
+#greatest_common_divisor (task_id: HumanEval/13)
+def greatest_common_divisor(a: int, b: int) -> int:
+    while b:
+        a, b = b, a % b
+    return a
+
+#strlen (task_id: HumanEval/23)
+def strlen(string: str) -> int:
+    count = 0
+    for _ in string:
+        count += 1
+    return count
+
+#max_element (task_id: HumanEval/35)
+
+def max_element(l: list):
+    if not l:
+        raise ValueError("Cannot find maximum of an empty list.")
+    maximum = l[0]
+    for element in l:
+        if element > maximum:
+            maximum = element
+    return maximum
+
+#incr_list (task_id: HumanEval/42)
+def incr_list(l: list):
+    incremented_list = []
+    for element in l:
+        incremented_list.append(element + 1)
+    return incremented_list
+
+#median (task_id: HumanEval/47)
+def median(l: list):
+    n = len(l)
+    if n == 0:
+        raise ValueError("Cannot find median of an empty list.")
+    sorted_list = sorted(l)
+    if n % 2 == 1:
+        # Odd number of elements, median is the middle one
+        middle_index = n // 2
+        return sorted_list[middle_index]
+    else:
+        # Even number of elements, median is the average of the two middle ones
+        middle_index_right = n // 2
+        middle_index_left = middle_index_right - 1
+        return (sorted_list[middle_index_left] + sorted_list[middle_index_right]) / 2
+    
+
+#sum_to_n (task_id: HumanEval/60)
+def sum_to_n(n: int):
+    if n <= 0:
+        return 0
+    return n * (n + 1) // 2
+
+#add (task_id: HumanEval/53)
+def add(x: int, y: int):
+    return x + y
 
 ### MEDUM LEVEL PROBLEMS ###
 
