@@ -1,8 +1,69 @@
 
 # @Authors
-# Student Names: <Almila Duru Kavak, Umut Ural>
-# Student IDs: <150150703, 150200013>
+# Student Names: <Almila Duru Kavak, Aydan Günaydın, Umut Ural>
+# Student IDs: <150150703, 150200012, 150200013>
 
+from typing import List, Tuple
+from collections import deque
+
+### EASY LEVEL PROBLEMS ###
+
+# make_palindrome (task_id: HumanEval/10)
+def make_palindrome(string: str):
+    if not string:
+        return ''
+
+# truncate_number (task_id: HumanEval/2)
+def truncate_number(number: float) -> float:
+    return number % 1.0
+
+# sum_product (task_id: HumanEval/8)
+def sum_product(numbers: List[int]) -> Tuple[int, int]:
+    sum_value = 0
+    prod_value = 1
+
+    for n in numbers:
+        sum_value += n
+        prod_value *= n
+    return sum_value, prod_value
+
+# greatest_common_divisor (task_id: HumanEval/13)
+def greatest_common_divisor(a: int, b: int) -> int:
+    while b:
+        a, b = b, a % b
+    return a
+
+# strlen (task_id: HumanEval/23)
+def strlen(string: str) -> int:
+    return len(string)
+
+# max_element (task_id: HumanEval/35)
+def max_element(l: list):
+    m = l[0]
+    for e in l:
+        if e > m:
+            m = e
+    return m
+
+# incr_list (task_id: HumanEval/42)
+def incr_list(l: list):
+    return [(e + 1) for e in l]
+
+# median (task_id: HumanEval/47)
+def median(l: list):
+    l = sorted(l)
+    if len(l) % 2 == 1:
+        return l[len(l) // 2]
+    else:
+        return (l[len(l) // 2 - 1] + l[len(l) // 2]) / 2.0
+    
+# sum_to_n (task_id: HumanEval/60)
+def sum_to_n(n: int):
+    return sum(range(n + 1))
+
+# add (task_id: HumanEval/53)
+def add(x: int, y: int):
+    return x + y
 
 ### MEDIUM LEVEL PROBLEMS ###
 

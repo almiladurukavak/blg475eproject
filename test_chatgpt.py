@@ -1,9 +1,60 @@
 # @Authors
-# Student Names: <Almila Duru Kavak, Umut Ural>
-# Student IDs: <150150703, 150200013>
+# Student Names: <Almila Duru Kavak, Aydan Günaydın, Umut Ural>
+# Student IDs: <150150703, 150200012, 150200013>
 
 from chatgpt import *
 
+### EASY LEVEL PROBLEMS ###
+
+def test_make_palindrome():
+    assert make_palindrome("race") == "racecar"      # Append "car" reversed to get palindrome
+    assert make_palindrome("aab") == "aabaa"         # Append "aa" reversed
+    assert make_palindrome("abcba") == "abcba"       # Already a palindrome, return as-is
+
+def test_truncate_number():
+    assert truncate_number(3.5) == 0.5          # Standard case
+    assert truncate_number(10.99) == 0.99       # Large integer part
+    assert truncate_number(7.0) == 0.0          # No decimal part
+
+def test_sum_product():
+    assert sum_product([]) == (0, 1)                     # Empty list
+    assert sum_product([5]) == (5, 5)                    # Single element
+    assert sum_product([1, 2, 3, 4]) == (10, 24)         # Multiple elements
+
+def test_greatest_common_divisor():
+    assert greatest_common_divisor(3, 5) == 1            # Co-prime numbers
+    assert greatest_common_divisor(25, 15) == 5          # Common divisor > 1
+    assert greatest_common_divisor(0, 10) == 10          # One of the inputs is 0
+
+def test_strlen():
+    assert strlen('') == 0              # Empty string
+    assert strlen('abc') == 3           # Simple case
+    assert strlen('hello world!') == 12 # String with space and punctuation
+
+def test_max_element():
+    assert max_element([1, 2, 3]) == 3                       # Simple ascending list
+    assert max_element([5, 3, -5, 2, -3, 3, 9, 0, 123, 1]) == 123  # Mixed values
+    assert max_element([-10, -20, -3, -4]) == -3             # All negative numbers
+
+def test_incr_list():
+    assert incr_list([1, 2, 3]) == [2, 3, 4]                       # Simple increment
+    assert incr_list([5, 3, 5, 2, 3, 3, 9, 0, 123]) == [6, 4, 6, 3, 4, 4, 10, 1, 124]  # Mixed values
+    assert incr_list([]) == []                                    # Empty list
+
+def test_median():
+    assert median([3, 1, 2, 4, 5]) == 3                   # Odd number of elements
+    assert median([-10, 4, 6, 1000, 10, 20]) == 15.0      # Even number of elements
+    assert median([7]) == 7                              # Single element
+
+def test_sum_to_n():
+    assert sum_to_n(30) == 465              # General case
+    assert sum_to_n(1) == 1                 # Smallest valid input
+    assert sum_to_n(100) == 5050            # Larger input
+
+def test_add():
+    assert add(2, 3) == 5               # Basic addition
+    assert add(5, 7) == 12              # Larger numbers
+    assert add(-4, 9) == 5              # Negative and positive number
 
 ### MEDIUM LEVEL PROBLEMS ###
 
