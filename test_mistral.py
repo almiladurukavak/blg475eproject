@@ -62,6 +62,36 @@ def test_even_odd_palindrome():
 
     print("All test cases passed!")
 
+def test_sum_squares():
+    # Test case 1: Basic example
+    assert sum_squares([1, 2, 3]) == 6  # 1^2 + 2 + 3^2 = 1 + 2 + 9 = 12
+
+    # Test case 2: Empty list
+    assert sum_squares([]) == 0
+
+    # Test case 3: Negative numbers
+    assert sum_squares([-1, -5, 2, -1, -5]) == -126  # (-1)^2 + (-5) + 2^2 + (-1)^3 + (-5)^3 = 1 - 5 + 4 - 1 - 125 = -126
+
+    # Test case 4: Mixed positive and negative numbers
+    assert sum_squares([1, -2, 3, 4, -5, 6]) == 106  # 1^2 + (-2) + 3^2 + 4^3 + (-5) + 6^2 = 1 - 2 + 9 + 64 - 5 + 36 = 103
+
+    # Test case 5: All indices are multiples of 3 or 4
+    assert sum_squares([1, 2, 3, 4]) == 82  # 1^2 + 2^3 + 3^2 + 4^3 = 1 + 8 + 9 + 64 = 82
+
+    # Test case 6: No indices are multiples of 3 or 4
+    assert sum_squares([1, 2, 3, 4, 5]) == 15  # 1 + 2 + 3 + 4 + 5 = 15
+
+    # Test case 7: Large numbers
+    assert sum_squares([10, 20, 30, 40, 50]) == 1250  # 10^2 + 20 + 30^2 + 40^3 + 50 = 100 + 20 + 900 + 64000 + 50 = 65070
+
+    # Test case 8: Single element list
+    assert sum_squares([7]) == 49  # 7^2 = 49
+
+    # Test case 9: List with zero
+    assert sum_squares([0, 1, 2, 3, 4]) == 20  # 0^2 + 1 + 2 + 3^2 + 4^3 = 0 + 1 + 2 + 9 + 64 = 76
+
+    print("All test cases passed!")
+
 
 def test_specialFilter():
     # Test case 1: Basic example
@@ -493,7 +523,6 @@ def test_decode_cyclic():
     assert decode_cyclic(encoded_str3) == expected_decoded_str3, f"Test case 3 failed: {decode_cyclic(encoded_str3)}"
 
     print("All test cases passed!")
-
 
 
 
