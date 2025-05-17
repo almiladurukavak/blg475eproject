@@ -135,6 +135,10 @@ def test_fib():
     assert fib(20) == 6765   # fib(20) = 6765
     assert fib(0) == 0       # Base case for n = 0
 
+    # ,,,
+    assert fib(7) == 13  # fib(7) = 1, 1, 2, 3, 5, 8, 13
+    assert fib(15) == 610  # fib(15) = 610
+
     print("All test cases passed!")
 
 
@@ -158,6 +162,14 @@ def test_common():
     # Test case 6: Common elements with one list being a subset of the other
     assert common([1, 2, 3], [2, 3, 4, 5]) == [2, 3]
 
+#,,,
+
+    # Test case 7: Common elements with lists containing only one element
+    assert common([7], [7]) == [7]  # Both lists have the same single element
+
+    # Test case 8: Common elements with lists containing duplicate elements
+    assert common([2, 2, 3, 3, 4], [2, 3, 3, 5]) == [2, 3]  # Lists with duplicate elements
+
     print("All test cases passed!")
 
 
@@ -180,6 +192,13 @@ def test_even_odd_palindrome():
     # Test case 6: Palindromes in the range 1 to 10 (inclusive)
     assert even_odd_palindrome(10) == (4, 5)  # Even palindromes: 2, 4, 6, 8, Odd palindromes: 1, 3, 5, 7, 9
 
+    # ,,,
+
+    # Test case 7: Palindromes in the range 1 to 2 (inclusive)
+    assert even_odd_palindrome(2) == (1, 1)  # Even palindrome: 2, Odd palindrome: 1
+
+    # Test case 8: Palindromes in the range 1 to 0 (inclusive)
+    assert even_odd_palindrome(0) == (0, 0)  # No palindromes in this range
     print("All test cases passed!")
 
 def test_sum_squares():
@@ -210,6 +229,15 @@ def test_sum_squares():
     # Test case 9: List with zero
     assert sum_squares([0, 1, 2, 3, 4]) == 20  # 0^2 + 1 + 2 + 3^2 + 4^3 = 0 + 1 + 2 + 9 + 64 = 76
 
+    # ,,,
+
+    # Test case 10: All elements are zero
+    assert sum_squares([0, 0, 0, 0]) == 0  # 0^2 + 0 + 0^2 + 0^3 = 0 + 0 + 0 + 0 = 0
+
+    # Test case 11: Mixed operations with large and small numbers
+    assert sum_squares([-3, 4, -5, 6]) == 111  # (-3)^2 + 4 + (-5)^3 + 6^2 = 9 + 4 - 125 + 36 = -76
+
+
     print("All test cases passed!")
 
 
@@ -234,6 +262,14 @@ def test_specialFilter():
 
     # Test case 7: Large numbers
     assert specialFilter([12345, 67891, 24680, 13579]) == 2  # 12345 and 13579 meet the criteria
+
+    # ,,,
+
+    # Test case 8: Single valid number
+    assert specialFilter([7]) == 1  # 7 meets the criteria
+
+    # Test case 9: Empty list
+    assert specialFilter([]) == 0  # No numbers to meet the criteria
 
     print("All test cases passed!")
 
@@ -263,6 +299,14 @@ def test_is_bored():
 
     # Test case 8: Mixed sentences
     assert is_bored("This is a test. I am testing. Are you ready? I hope so!") == 2
+
+    # ,,,
+    # Test case 9: Sentences with "I" in the middle
+    assert is_bored("This is a test. In the middle I am. Are you ready?") == 1  # Only one sentence starts with "I"
+
+    # Test case 10: Sentences with "I" in different cases
+    assert is_bored("i am here. You are there. I am bored.") == 2  # Two sentences start with "I" (case-insensitive)
+
     print("All test cases passed!")
 
 
@@ -297,6 +341,15 @@ def test_encrypt():
 
     # Test case 10: String with all letters in the alphabet
     assert encrypt('abcdefghijklmnopqrstuvwxyz') == 'ijklmnopqrstuvwxyzabcdefgh'
+
+
+    # ,,,
+
+    # Test case 11: Single character string
+    assert encrypt('a') == 'i'  # Single lowercase character
+
+    # Test case 12: String with only non-alphabetic characters
+    assert encrypt('123!@#') == '123!@#'  # No alphabetic characters to encrypt
 
     print("All test cases passed!")
 
@@ -333,6 +386,14 @@ def test_rounded_avg():
     # Test case 10: Zero range
     assert rounded_avg(0, 0) == "0b0"
 
+    # ,,,
+
+    # Test case 11: Minimum integer values
+    assert rounded_avg(-2147483648, -2147483647) == "0b11111111111111111111111111111111"  # Minimum integer range
+
+    # Test case 12: Maximum integer values
+    assert rounded_avg(2147483646, 2147483647) == "0b1111111111111111111111111111111"  # Maximum integer range
+
     print("All test cases passed!")
 
 
@@ -368,6 +429,14 @@ def test_minSubArraySum():
     # Test case 10: Array with a mix of small and large numbers
     assert minSubArraySum([10, -15, 20, -5, 30]) == -15
 
+
+    # ,,,
+    # Test case 11: Empty array
+    assert minSubArraySum([]) == 0  # Empty array should return 0
+
+    # Test case 12: Large array with mixed numbers
+    assert minSubArraySum([100, -200, 300, -400, 500]) == -400  # Large array with mixed positive and negative numbers
+
     print("All test cases passed!")
 
 def test_intersection():
@@ -400,6 +469,15 @@ def test_intersection():
 
     # Test case 10: Intervals with negative numbers do not intersect
     assert intersection((-5, -3), (-2, 0)) == "NO"  # No intersection
+
+
+    # ,,,
+
+    # Test case 11: Intervals with zero length
+    assert intersection((1, 1), (1, 1)) == "NO"  # Intersection is (1, 1), length is 1 (non-prime)
+
+    # Test case 12: Large intervals with a prime length intersection
+    assert intersection((1000, 2000), (1500, 1502)) == "YES"  # Intersection is (1500, 1502), length is 3 (prime)
 
     print("All test cases passed!")
 
