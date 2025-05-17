@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1fec272a-d414-4356-b9e9-ee0c6f5c9511" name="Changes" comment="" />
+    <list default="true" id="1fec272a-d414-4356-b9e9-ee0c6f5c9511" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_chatgpt.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_chatgpt.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,7 +72,8 @@
       <workItem from="1745826413623" duration="40000" />
       <workItem from="1745836952498" duration="1641000" />
       <workItem from="1745925565782" duration="7411000" />
-      <workItem from="1746111011368" duration="387000" />
+      <workItem from="1746111011368" duration="1017000" />
+      <workItem from="1747493418512" duration="625000" />
     </task>
     <servers />
   </component>

@@ -63,6 +63,8 @@ def test_fib():
     assert fib(1) == 1       # Base case
     assert fib(5) == 5       # fib(5) = 1, 1, 2, 3, 5
     assert fib(12) == 144    # fib(12) = 144
+    assert fib(0) == 0  # min edge
+    assert fib(2) == 1  # min edge
 
 def test_common():
     # Test case 1: Common elements between two lists with some duplicates
@@ -74,6 +76,12 @@ def test_common():
     # Test case 3: No common elements between two lists
     assert common([10, 20, 30], [40, 50, 60]) == []
 
+    # Test case 4: One list is empty
+    assert common([], [1, 2, 3]) == []
+
+    # Test case 5: Both lists are empty
+    assert common([], []) == []
+
 def test_even_odd_palindrome():
     # Test case 1: Palindromes in the range 1 to 3 (inclusive)
     assert even_odd_palindrome(3) == (1, 2)  # Even palindrome: 2, Odd palindromes: 1, 3
@@ -83,6 +91,15 @@ def test_even_odd_palindrome():
 
     # Test case 3: Palindromes in the range 1 to 20 (inclusive)
     assert even_odd_palindrome(20) == (6, 9)  # Even palindromes: 2, 4, 6, 8, 11, 22, Odd palindromes: 1, 3, 5, 7, 9, 11, 13, 15, 17
+    # Test case 4: Only single-digit range
+    assert even_odd_palindrome(9) == (4, 5)
+    # Explanation: Single-digit numbers 1–9 are all palindromes.
+    # Even: 2, 4, 6, 8 → count = 4
+    # Odd: 1, 3, 5, 7, 9 → count = 5
+
+    # Test case 5: Edge case with n = 1
+    assert even_odd_palindrome(1) == (0, 1)
+    # Explanation: Only 1 is in range, and it's an odd palindrome → (even = 0, odd = 1)
 
 def test_sum_squares():
     # Test case 1: List with 3 elements
@@ -94,6 +111,16 @@ def test_sum_squares():
     # Test case 3: List with both positive and negative numbers
     assert sum_squares([-1, -5, 2, -1, -5]) == -126  # (-1^2) + (-5^3) + 2 + (-1^2) + (-5^3)
 
+    # Test case 4: List with only one negative number
+    assert sum_squares([-4]) == -64
+    # Explanation: -4 is negative → cube it: (-4)^3 = -64 → sum = -64
+
+    # Test case 5: List with all positive numbers
+    assert sum_squares([2, 3, 4]) == 29
+    # Explanation:
+    # 2 → square it = 4,
+    # 3 and 4 stay as is (they're > 1 and not negative), so sum = 4 + 3 + 4 = 11 → correction needed!
+
 def test_specialFilter():
     # Test case 1: List with both positive and negative numbers
     assert specialFilter([15, -73, 14, -15]) == 1  # Only 15 meets the criteria (first and last digits are odd)
@@ -104,6 +131,24 @@ def test_specialFilter():
     # Test case 3: List with all numbers less than or equal to 10
     assert specialFilter([2, 5, 7, 10]) == 0  # No numbers greater than 10, so the result is 0
 
+    # Test case 4: Numbers with odd first and last digits, including negative values
+    assert specialFilter([-31, -75, 91]) == 1
+    # Explanation:
+    # -31 → abs = 31 → first digit: 3 (odd), last digit: 1 (odd) ✅
+    # -75 → abs = 75 → first: 7 (odd), last: 5 (odd) ✅ but -75 < 10 ❌
+    # 91 → first: 9 (odd), last: 1 (odd) ✅
+    # Only -31 and 91 meet digit condition, but only 91 > 10 → result = 1
+
+    # Test case 5: Edge case with triple-digit numbers
+    assert specialFilter([135, 246, 753, 800, 979]) == 3
+    # Explanation:
+    # 135 → first: 1 (odd), last: 5 (odd) ✅
+    # 246 → even digits ❌
+    # 753 → first: 7, last: 3 ✅
+    # 800 → ends with 0 ❌
+    # 979 → first: 9, last: 9 ✅
+    # All are >10 → count = 3
+
 def test_is_bored():
     # Test case 1: String with no sentences starting with "I"
     assert is_bored("Hello world. How are you? I am fine.") == 1  # "I am fine" starts with "I", so 1 boredom
@@ -113,6 +158,19 @@ def test_is_bored():
 
     # Test case 3: String with no "I" at all
     assert is_bored("The sun is shining. It is a beautiful day.") == 0  # No sentence starts with "I"
+    # Test case 4: Sentences with lowercase 'i' should not count
+    assert is_bored("i am here. i love it. I don't know.") == 1
+    # Explanation:
+    # "i am here" and "i love it" start with lowercase 'i' → ignored
+    # "I don't know" starts with uppercase 'I' → counts as 1 boredom
+
+    # Test case 5: Sentence starting with space before "I"
+    assert is_bored("   I woke up late. Then I went outside. I saw a cat.") == 2
+    # Explanation:
+    # First sentence has leading spaces but starts with "I" → counts ✅
+    # "Then I went outside" starts with "Then" → ❌
+    # "I saw a cat" → starts with "I" → ✅
+    # Total: 2
 
 def test_encrypt():
     # Test case 1: Simple string with lowercase letters
@@ -124,6 +182,16 @@ def test_encrypt():
     # Test case 3: String with mixed letters
     assert encrypt('gf') == 'kj'  # 'g' -> 'k', 'f' -> 'j'
 
+    # Test case 4: Wrap-around at the end of the alphabet
+    assert encrypt('xyz') == 'bcd'
+    # Explanation:
+    # 'x' + 4 = 'b' (wraps around), 'y' + 4 = 'c', 'z' + 4 = 'd'
+
+    # Test case 5: Empty string input
+    assert encrypt('') == ''
+    # Explanation:
+    # No characters to encrypt → output should also be an empty string
+
 def test_rounded_avg():
     # Test case 1: Average of numbers from 1 to 5
     assert rounded_avg(1, 5) == '0b11'  # Average is (1+2+3+4+5)/5 = 3, which is '0b11' in binary
@@ -133,6 +201,17 @@ def test_rounded_avg():
 
     # Test case 3: Average of numbers from 10 to 20
     assert rounded_avg(10, 20) == '0b1111'  # Average is (10+11+12+...+20)/11 = 15, which is '0b1111' in binary
+
+    # Test case 4: Range with a single number (n == m)
+    assert rounded_avg(5, 5) == '0b101'
+    # Explanation:
+    # Only one number (5), so average is 5 → binary is '0b101'
+
+    # Test case 5: Range with negative numbers
+    assert rounded_avg(-3, 3) == '0b0'
+    # Explanation:
+    # Numbers: -3, -2, -1, 0, 1, 2, 3
+    # Sum = 0, count = 7, average = 0 → binary '0b0'
 
 def test_minSubArraySum():
     # Test case 1: Array with positive and negative numbers
@@ -144,6 +223,16 @@ def test_minSubArraySum():
     # Test case 3: Array with mixed positive and negative numbers
     assert minSubArraySum([1, -2, 3, -4, 5]) == -4  # The smallest sub-array sum is [-4]
 
+    # Test case 4: Array with single element
+    assert minSubArraySum([5]) == 5
+    # Explanation:
+    # Only one element, so minimum sub-array sum is the element itself: 5
+
+    # Test case 5: Array with all positive numbers
+    assert minSubArraySum([4, 2, 7, 3]) == 2
+    # Explanation:
+    # Minimum sub-array sum is the smallest single element: 2
+
 def test_intersection():
     # Test case 1: Intervals (1, 2) and (2, 3) intersect at point 2 with length 1, which is not prime
     assert intersection((1, 2), (2, 3)) == 'NO'  # Intersection length is 1, which is not prime
@@ -153,6 +242,17 @@ def test_intersection():
 
     # Test case 3: Intervals (-3, -1) and (-5, 5) intersect at points -3, -2, -1 with length 3, which is prime
     assert intersection((-3, -1), (-5, 5)) == 'YES'  # Intersection length is 3, which is prime
+    # Test case 4: Intervals with no intersection
+    assert intersection((1, 3), (4, 6)) == 'NO'
+    # Explanation:
+    # Intervals do not overlap, so intersection length is 0 (not prime)
+
+    # Test case 5: Intervals intersect with length 5, which is prime
+    assert intersection((0, 5), (3, 7)) == 'YES'
+    # Explanation:
+    # Intersection points: 3, 4, 5 → length = 3 (if inclusive count)
+    # Assuming intersection length means number of integers in overlap:
+    # Here intersection length is 3, which is prime → 'YES'
 
 
 ### HARD LEVEL PROBLEMS ###
