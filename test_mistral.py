@@ -15,6 +15,11 @@ def test_make_palindrome():
     # Test Case 3: Non-Palindromic String
     assert make_palindrome("race") == "racecar", "Test Case 3 Failed"
 
+######################################################################
+    assert make_palindrome("") == ""
+    assert make_palindrome("0") == "0"
+    assert make_palindrome("aa") == "aa"
+
     print("All test cases passed!")
 
 def test_truncate_number():
@@ -26,6 +31,11 @@ def test_truncate_number():
 
     # Test Case 3: Floating Point Number with Small Decimal Part
     assert truncate_number(4.99) == 0.99, "Test Case 3 Failed"
+################################################MANUAL TESTS##########################
+    assert truncate_number(0.0) == 0.0
+    assert truncate_number(3.00001) == 0.00001
+    assert truncate_number(333.01) == 0.01
+    assert truncate_number(-333.01) == 0.01
 
     print("All test cases passed!")
 
@@ -39,6 +49,11 @@ def test_sum_product():
     # Test Case 3: List with Negative and Positive Integers
     assert sum_product([-1, 2, -3, 4]) == (2, 24), "Test Case 3 Failed"
 
+    ################################################MANUAL TESTS##########################
+    assert sum_product([0]) == (0, 0) 
+    assert sum_product([100000, 3]) == (100003, 300000)       
+    assert sum_product([-1, 2, -3]) == (-2, 6)    
+
     print("All test cases passed!")
 
 def test_greatest_common_divisor():
@@ -50,7 +65,10 @@ def test_greatest_common_divisor():
 
     # Test Case 3: One Number is Zero
     assert greatest_common_divisor(0, 7) == 7, "Test Case 3 Failed"
-
+    ################################################MANUAL TESTS##########################
+    assert greatest_common_divisor(1000000, 2) == 2
+    assert greatest_common_divisor(0, 0) == 0
+    assert greatest_common_divisor(-12, 18) == 6 
     print("All test cases passed!")
 
 def test_strlen():
@@ -63,6 +81,10 @@ def test_strlen():
     # Test Case 3: String with Spaces and Special Characters
     assert strlen('Hello, World!') == 13, "Test Case 3 Failed"
 
+################################################MANUAL TESTS##########################
+    assert strlen('how\are\you') == 12
+    assert strlen('好') == 1
+
     print("All test cases passed!")
 
 def test_max_element():
@@ -74,6 +96,10 @@ def test_max_element():
 
     # Test Case 3: List with Duplicate Maximum Values
     assert max_element([7, 7, 7, 1, 2]) == 7, "Test Case 3 Failed"
+    ################################################MANUAL TESTS##########################
+    assert max_element([3]) == 3    
+    assert max_element([3, 3]) == 3   
+    assert max_element([-3]) == -3   
 
     print("All test cases passed!")
 
@@ -86,6 +112,9 @@ def test_incr_list():
 
     # Test Case 3: List with Negative Integers
     assert incr_list([-1, -2, -3]) == [0, -1, -2], "Test Case 3 Failed"
+    ################################################MANUAL TESTS##########################
+    assert incr_list([3]) == [4]  
+    assert incr_list([1.2, 2.2]) == [2.2, 3.2]     
 
     print("All test cases passed!")
 
@@ -98,6 +127,9 @@ def test_median():
 
     # Test Case 3: List with negative and positive numbers
     assert median([-5, -1, 0, 2, 3]) == 0, "Test Case 3 Failed"
+    ################################################MANUAL TESTS##########################
+    assert median([0.5, 1.5, 2.5]) == 1.5
+    assert median([-1, -2, -3]) == 1.5
 
     print("All test cases passed!")
 
@@ -110,6 +142,9 @@ def test_sum_to_n():
 
     # Test Case 3
     assert sum_to_n(5) == 15, "Test Case 3 Failed"
+    ################################################MANUAL TESTS##########################
+    assert sum_to_n(0) == 0
+    assert sum_to_n(-5) == 0  
 
     print("All test cases passed!")
 
@@ -122,6 +157,9 @@ def test_add():
 
     # Additional Test Case 3: Negative Numbers
     assert add(-1, -2) == -3, "Test Case 3 Failed"
+    ################################################MANUAL TESTS##########################
+    assert add(0, 0) == 0
+    assert add(-4, -9) == -13
 
     print("All test cases passed!")
     

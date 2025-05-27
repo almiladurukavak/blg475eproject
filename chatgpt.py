@@ -9,9 +9,18 @@ from collections import deque
 ### EASY LEVEL PROBLEMS ###
 
 # make_palindrome (task_id: HumanEval/10)
-def make_palindrome(string: str):
-    if not string:
-        return ''
+def is_palindrome(string: str) -> bool:
+  return string == string[::-1]
+
+def make_palindrome(string: str) -> str:
+  n = len(string)
+  if n == 0:
+      return ""
+  for i in range(n - 1, -1, -1):
+      if is_palindrome(string[i:]):
+          prefix_to_reverse = string[:i]
+          return string + prefix_to_reverse[::-1]
+  return string + string[:-1][::-1]
 
 # truncate_number (task_id: HumanEval/2)
 def truncate_number(number: float) -> float:
