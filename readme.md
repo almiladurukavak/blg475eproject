@@ -40,8 +40,8 @@ Ensure you have Python installed. You can install the required dependencies usin
 Run the Code:
 Navigate to the project directory and run the Python scripts as needed.
 
- ###Dataset
+### Dataset
 The project uses the HumanEval dataset for generating code and tests. The dataset includes descriptions of various programming exercises.
 We selected 30 prompts for generating code using LLMs(Gemini, ChatGPT, Mistral AI).  
-Reports
+### Reports
 The project requires submitting reports for each phase. Report url: https://www.overleaf.com/project/6807642b2e8d9b1e78de7a89
