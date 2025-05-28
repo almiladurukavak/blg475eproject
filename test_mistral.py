@@ -523,23 +523,6 @@ def test_intersection():
 
 ### HARD LEVEL PROBLEMS ###
 
-
-
-def total_match(lst1, lst2):
-    # Calculate the total number of characters in lst1
-    total_chars_lst1 = sum(len(s) for s in lst1)
-
-    # Calculate the total number of characters in lst2
-    total_chars_lst2 = sum(len(s) for s in lst2)
-
-    # Compare the totals and return the appropriate list
-    if total_chars_lst1 <= total_chars_lst2:
-        return lst1
-    else:
-        return lst2
-
-    print("All test cases passed!")
-
 def test_total_match():
     # Test case 1: lst1 has fewer total characters than lst2
     lst1 = ["apple", "banana"]
@@ -582,7 +565,9 @@ def test_total_match():
     assert total_match(lst1, lst2) == lst2, "Test case 8 failed"
 
     print("All test cases passed!")
-
+    assert total_match(['a', 'b'], ['d', 'e', 'f']) == ['a', 'b'], "Test Case 4 Failed" # First list is shorter than second, should return first list
+    assert total_match([], []) == [], "Test Case 5 Failed" # Empty lists should return an empty list
+    assert total_match(['first', 'list'], ['is', 'the', 'same']) == ['first', 'list'], "Test Case 6 Failed" # Both lists are the same size, should return the first list
 
 def test_will_it_fly():
     # Test case 1: Balanced list with sum less than or equal to the maximum weight
@@ -599,9 +584,36 @@ def test_will_it_fly():
     q3 = [2, 3, 4, 3, 2]
     w3 = 10
     assert will_it_fly(q3, w3) == False, "Test case 3 failed"
+    ################################################MANUAL TESTS##########################
+    # Test Case 4: Empty list
+    q4 = []
+    w4 = 1
+    assert will_it_fly(q4, w4) == True, f"Test Case 4 Failed: {q4}, {w4}"
 
+    # Test Case 5: Palindrome with negative numbers
+    q5 = [-1, 2, 3, 2, -1]
+    w5 = 5
+    assert will_it_fly(q5, w5) == True, f"Test Case 5 Failed: {q5}, {w5}"
 
+    # Test Case 6: Palindrome with all zeros
+    q6 = [0, 0, 0]
+    w6 = 0
+    assert will_it_fly(q6, w6) == True, f"Test Case 6 Failed: {q6}, {w6}"
 
+    # Test Case 7: Palindrome with a single element
+    q7 = [5]
+    w7 = 5
+    assert will_it_fly(q7, w7) == True, f"Test Case 7 Failed: {q7}, {w7}"
+
+    # Test Case 8: Palindrome with an even number of elements
+    q8 = [1, 2, 2, 1]
+    w8 = 10
+    assert will_it_fly(q8, w8) == True, f"Test Case 8 Failed: {q8}, {w8}"
+
+    # Test Case 9: Negative weight
+    q9 = [1, 2, 1]
+    w9 = -1
+    assert will_it_fly(q9, w9) == False, f"Test Case 9 Failed: {q9}, {w9}"
 
 def test_circular_shift():
     # Test case 1: Shift the digits of 12345 by 2 positions to the right
@@ -614,6 +626,16 @@ def test_circular_shift():
     assert circular_shift(123456789, 3) == '789123456', f"Test case 3 failed: {circular_shift(123456789, 3)}"
 
     print("All test cases passed!")
+    ################################################MANUAL TESTS##########################
+    # Test case 4: Shift 0 digits
+    result4 = circular_shift(12345, 0)
+    assert result4 == '12345', f"Test case 4 failed: Expected '12345', but got {result4}"
+    # Test case 5: Shift equal to number length
+    result5 = circular_shift(321, 3)
+    assert result5 == '321', f"Test case 5 failed: Expected '321', but got {result5}"
+    # Test case 6: Shift negative digits
+    result6 = circular_shift(12345, -2)
+    assert result6 == '12345', f"Test case 6 failed: Expected '12345', but got {result6}"
 
 def test_reverse_delete():
     # Test case 1: String becomes a palindrome after removing specified characters
@@ -632,8 +654,25 @@ def test_reverse_delete():
     assert reverse_delete(s3, c3) == ("", True)
 
     print("All test cases passed!")
+    ################################################MANUAL TESTS##########################
 
-
+    """ 
+        In here mistral also (like chatgpt) returns two values but it should've only returned one value.
+        Therefore I've created test cases to check the second value only.
+    """
+    
+    # Test case 4: Empty first string
+    result4, is_palindrome4 = reverse_delete("", "abc")
+    assert is_palindrome4 == True, f"Test case 4 failed: {is_palindrome4}"
+    # Test case 5: Empty second string
+    result5, is_palindrome5 = reverse_delete("abc", "")
+    assert is_palindrome5 == False, f"Test case 5 failed: {is_palindrome5}"
+    # Test case 6: Both strings empty
+    result6, is_palindrome6 = reverse_delete("", "")
+    assert is_palindrome6 == True, f"Test case 6 failed: {is_palindrome6}"
+    # Test case 7: Removing characters from a string that becomes empty
+    result7, is_palindrome7 = reverse_delete("aaaa", "a")
+    assert is_palindrome7 == True, f"Test case 7 failed: {is_palindrome7}"
 
 from collections import deque
 def test_minPath():
@@ -668,8 +707,15 @@ def test_minPath():
     assert minPath(grid3, k3) == expected3, f"Test case 3 failed: expected {expected3}, got {minPath(grid3, k3)}"
 
     print("All test cases passed!")
+    ################################################MANUAL TESTS##########################
+    # Test Case 4: Edge case with a small grid and k larger than the number of elements
+    assert minPath([[1, 2], [3, 4]], 10) == [1, 2, 1, 2, 1, 2, 1, 2, 1, 2]
 
+    # Test Case 5:
+    assert minPath([[6, 1, 5], [3, 8, 9], [2, 7, 4]], 8) == [1, 5, 1, 5, 1, 5, 1, 5]
 
+    # Test Case 6: 
+    assert minPath([[2, 7, 4], [3, 1, 5], [6, 8, 9]], 8) == [1, 3, 1, 3, 1, 3, 1, 3]
 
 def test_move_one_ball():
     # Test case 1: Array is already sorted
@@ -685,6 +731,22 @@ def test_move_one_ball():
     assert move_one_ball(arr3) == False, "Test case 3 failed"
 
     print("All test cases passed!")
+    ################################################MANUAL TESTS##########################
+    # Test case 4: An array with only one element
+    arr4 = [42]
+    assert move_one_ball(arr4) == True, f"Test case 4 failed for input {arr4}"
+
+    # Test case 5: An array with two elements that are already sorted
+    arr5 = [1, 2]
+    assert move_one_ball(arr5) == True, f"Test case 5 failed for input {arr5}"
+
+    # Test case 6: An array with negative numbers that can be sorted by moving one ball
+    arr6 = [-3, -1, -2, -4]
+    assert move_one_ball(arr6) == True, f"Test case 6 failed for input {arr6}"
+
+    # Test case 7: An array with negative numbers that cannot be sorted by moving one ball
+    arr7 = [-3, -1, -4, -2]
+    assert move_one_ball(arr7) == False, f"Test case 7 failed for input {arr7}"
 
 def test_Strongest_Extension():
     # Test case 1: Basic test with mixed case extensions
@@ -703,8 +765,24 @@ def test_Strongest_Extension():
     assert Strongest_Extension(class_name, extensions) == "SampleClass.TuvWxYz"
 
     print("All test cases passed!")
+    ################################################MANUAL TESTS##########################
+    # Test case 4: Extensions with same strength
+    class_name4 = "SpecialFormats"
+    extensions4 = ["Txt", "Pdf"]
+    result4 = Strongest_Extension(class_name4, extensions4)
+    assert result4 == "SpecialFormats.Txt", f"Expected 'SpecialFormats.Txt', but got {result4}"
 
+    # Test case 5: Extensions with numbers in them
+    class_name5 = "NumberedFormats"
+    extensions5 = ["12345", "pDf", "html5"]
+    result5 = Strongest_Extension(class_name5, extensions5)
+    assert result5 == "NumberedFormats.12345", f"Expected 'NumberedFormats.12345', but got {result5}"
 
+    # Test case 6: Extensions with numbers 2
+    class_name6 = "MixedFormats"
+    extensions6 = ["123", "PDF"]
+    result6 = Strongest_Extension(class_name6, extensions6)
+    assert result6 == "MixedFormats.PDF", f"Expected 'MixedFormats.PDF', but got {result6}"
 
 def test_right_angle_triangle():
     # Test case 1: Known right-angled triangle
@@ -717,10 +795,15 @@ def test_right_angle_triangle():
     assert right_angle_triangle(5, 12, 13) == True, "Test case 3 failed"
 
     print("All test cases passed!")
+    ################################################MANUAL TESTS##########################
+    # Test case 4: Negative sides (should return False)
+    assert right_angle_triangle(-3, 4, 5) == False, "Test case 4 failed"
 
+    # Test case 5: Zero as one of the sides (should return False)
+    assert right_angle_triangle(0, 5, 5) == False, "Test case 5 failed"
 
-
-
+    # Test case 6: All sides equal (should return False)
+    assert right_angle_triangle(5, 5, 5) == False, "Test case 6 failed"
 
 def test_do_algebra():
     # Test case 1: Basic arithmetic operations
@@ -739,8 +822,24 @@ def test_do_algebra():
     assert do_algebra(operator3, operand3) == -1, "Test case 3 failed"
 
     print("All test cases passed!")
+    ################################################MANUAL TESTS##########################
+    # Test case 4: Negative result
+    operator4 = [2,2,2]
+    operand4 = ['-', '-']
+    result4 = do_algebra(operator4, operand4)
+    assert result4 == -2, f"Test case 4 failed: expected 0, got {result4}"
 
+    # Test case 5: Operator priority
+    operator5 = ['+', '*', '-']
+    operand5 = [2, 3, 4, 5]
+    result5 = do_algebra(operator5, operand5)
+    assert result5 == 9, f"Test case 5 failed: expected 9, got {result5}"
 
+    # Test case 6: Negative operand
+    operator6 = ['*']
+    operand6 = [-10, -5]
+    result6 = do_algebra(operator6, operand6)
+    assert result6 == 50, f"Test case 6 failed: expected 50, got {result6}"
 
 def test_decode_cyclic():
     # Test case 1: String length is a multiple of 3
@@ -759,6 +858,21 @@ def test_decode_cyclic():
     assert decode_cyclic(encoded_str3) == expected_decoded_str3, f"Test case 3 failed: {decode_cyclic(encoded_str3)}"
 
     print("All test cases passed!")
+    ################################################MANUAL TESTS##########################
+    # Test case 4: Single character string
+    input_string_4 = "a"
+    expected_output_4 = "a"
+    assert decode_cyclic(input_string_4) == expected_output_4, f"Test case 4 failed: {decode_cyclic(input_string_4)}"
+    
+    # Test case 5: String with special characters
+    input_string_5 = "abc!@#"
+    expected_output_5 = "#abc!@"
+    assert decode_cyclic(input_string_5) == expected_output_5, f"Test case 5 failed: {decode_cyclic(input_string_5)}"
+    
+    # Test case 6: String with spaces
+    input_string_6 = "abc def ghi"
+    expected_output_6 = "ghi abc def"
+    assert decode_cyclic(input_string_6) == expected_output_6, f"Test case 6 failed: {decode_cyclic(input_string_6)}"
 
 
 
