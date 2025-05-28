@@ -604,10 +604,10 @@ def test_decode_cyclic():
     
     # Test case 5: String with special characters
     input_string_5 = "abc!@#"
-    expected_output_5 = "#abc!@"
+    expected_output_5 = "cab#!@"
     assert decode_cyclic(input_string_5) == expected_output_5, f"Test case 5 failed: {decode_cyclic(input_string_5)}"
     
     # Test case 6: String with spaces
     input_string_6 = "abc def ghi"
-    expected_output_6 = "ghi abc def"
+    expected_output_6 = "cabe dgf hi"
     assert decode_cyclic(input_string_6) == expected_output_6, f"Test case 6 failed: {decode_cyclic(input_string_6)}"
