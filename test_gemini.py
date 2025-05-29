@@ -52,7 +52,7 @@ def test_strlen():
     assert strlen("") == 0
     assert strlen("world!") == 6
 ################################################MANUAL TESTS##########################
-    assert strlen('how\are\you') == 12
+    assert strlen('how are you') == 11
     assert strlen('好') == 1
     print("All test cases passed!")
 

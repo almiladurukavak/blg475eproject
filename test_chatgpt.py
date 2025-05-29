@@ -48,7 +48,7 @@ def test_strlen():
     assert strlen('abc') == 3           # Simple case
     assert strlen('hello world!') == 12 # String with space and punctuation
     ################################################MANUAL TESTS##########################
-    assert strlen('how\are\you') == 12
+    assert strlen('how are you') == 11
     assert strlen('好') == 1
 
 def test_max_element():
