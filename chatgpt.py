@@ -622,3 +622,37 @@ def decode_cyclic(s: str):
 
     # Join all the groups back into a single string
     return "".join(groups)
+
+
+#INTEGRATED FUNC
+
+def circular_shift_encrypt_delete(x, shift, c):
+    # Step 1: Circular shift the digits of x
+    digits = list(str(x))
+    n = len(digits)
+    if shift > n:
+        digits.reverse()
+    else:
+        shift = shift % n
+        digits = digits[-shift:] + digits[:-shift]
+    digit_str = ''.join(digits)
+    
+    # Step 2: Encrypt using a rotated alphabet (shifted by 2 * 2 = 4)
+    encrypted = []
+    for ch in digit_str:
+        if ch.isalpha():
+            if ch.islower():
+                encrypted.append(chr((ord(ch) - ord('a') + 4) % 26 + ord('a')))
+            else:
+                encrypted.append(chr((ord(ch) - ord('A') + 4) % 26 + ord('A')))
+        else:
+            encrypted.append(ch)
+    encrypted_str = ''.join(encrypted)
+    
+    # Step 3: Delete characters found in c
+    result = ''.join(ch for ch in encrypted_str if ch not in c)
+    
+    # Step 4: Check if result is a palindrome
+    is_palindrome = result == result[::-1]
+    
+    return (result, is_palindrome)

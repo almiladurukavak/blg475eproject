@@ -611,3 +611,33 @@ def test_decode_cyclic():
     input_string_6 = "abc def ghi"
     expected_output_6 = "cabe dgf hi"
     assert decode_cyclic(input_string_6) == expected_output_6, f"Test case 6 failed: {decode_cyclic(input_string_6)}"
+
+
+#INTEGRATION TESTS BY OPENAI
+
+def test_integration_case_1():
+    # Normal circular shift: 12345 -> shift right 2 -> 45123
+    # No letters to encrypt, so result stays 45123
+    # Remove '3' from string -> "4512"
+    # Not a palindrome
+    assert circular_shift_encrypt_delete(12345, 2, '3') == ("4512", False)
+
+def test_integration_case_2():
+    # Shift > digit count: x = 123, shift = 5 (> 3), should reverse -> "321"
+    # Remove '1' -> "32"
+    # Not a palindrome
+    assert circular_shift_encrypt_delete(123, 5, '1') == ("32", False)
+
+def test_integration_case_3():
+    # x = 12321, shift = 0 -> no shift, stays "12321"
+    # Remove '0' -> "12321"
+    # Is a palindrome
+    assert circular_shift_encrypt_delete(12321, 0, '0') == ("12321", True)
+
+#MANUAL TESTS
+def test_integration_manual():
+    assert circular_shift_encrypt_delete(0, 1, '0') == ("", True)
+    assert circular_shift_encrypt_delete(789, 1000, '') == ("978", False)
+    assert circular_shift_encrypt_delete(121, 0, '12') == ("", True)
+    assert circular_shift_encrypt_delete(1221, 1, '1') == ("22", True)
+
