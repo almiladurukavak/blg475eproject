@@ -74,7 +74,7 @@ def test_median():
     assert median([7]) == 7                              # Single element
 ################################################MANUAL TESTS##########################
     assert median([0.5, 1.5, 2.5]) == 1.5
-    assert median([-1, -2, -3]) == 1.5
+    assert median([-1, -2, -3]) == -2
 
 def test_sum_to_n():
     assert sum_to_n(30) == 465              # General case

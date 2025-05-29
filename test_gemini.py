@@ -81,7 +81,7 @@ def test_median():
     assert median([5, 2, 1, 4, 3]) == 3
     ################################################MANUAL TESTS##########################
     assert median([0.5, 1.5, 2.5]) == 1.5
-    assert median([-1, -2, -3]) == 1.5
+    assert median([-1, -2, -3]) == -2
     print("All test cases passed!")
 
 def test_sum_to_n():
