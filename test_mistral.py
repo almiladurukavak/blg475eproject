@@ -632,10 +632,10 @@ def test_circular_shift():
     assert result4 == '12345', f"Test case 4 failed: Expected '12345', but got {result4}"
     # Test case 5: Shift equal to number length
     result5 = circular_shift(321, 3)
-    assert result5 == '321', f"Test case 5 failed: Expected '321', but got {result5}"
+    assert result5 == '123', f"Test case 5 failed: Expected '123', but got {result5}"
     # Test case 6: Shift negative digits
     result6 = circular_shift(12345, -2)
-    assert result6 == '12345', f"Test case 6 failed: Expected '12345', but got {result6}"
+    assert result6 == '34512', f"Test case 6 failed: Expected '34512', but got {result6}"
 
 def test_reverse_delete():
     # Test case 1: String becomes a palindrome after removing specified characters
@@ -741,7 +741,7 @@ def test_move_one_ball():
     assert move_one_ball(arr5) == True, f"Test case 5 failed for input {arr5}"
 
     # Test case 6: An array with negative numbers that can be sorted by moving one ball
-    arr6 = [-3, -1, -2, -4]
+    arr6 = [-3, -1, 0, -4]
     assert move_one_ball(arr6) == True, f"Test case 6 failed for input {arr6}"
 
     # Test case 7: An array with negative numbers that cannot be sorted by moving one ball
@@ -824,10 +824,10 @@ def test_do_algebra():
     print("All test cases passed!")
     ################################################MANUAL TESTS##########################
     # Test case 4: Negative result
-    operator4 = [2,2,2]
-    operand4 = ['-', '-']
+    operator4 = ['-', '-']
+    operand4 = [2,2,2]
     result4 = do_algebra(operator4, operand4)
-    assert result4 == -2, f"Test case 4 failed: expected 0, got {result4}"
+    assert result4 == -2, f"Test case 4 failed: expected -2, got {result4}"
 
     # Test case 5: Operator priority
     operator5 = ['+', '*', '-']

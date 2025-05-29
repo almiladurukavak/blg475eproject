@@ -470,12 +470,44 @@ def Strongest_Extension(class_name, extensions):
     return f"{class_name}.{strongest_extension}"
 
 # right_angle_triangle (task_id: HumanEval/157)
+""" 
+
+This is the old version of the right_angle_triangle function. New version with the updated prompt is below.
+
 def right_angle_triangle(a, b, c):
     # Find the largest of the three sides
     sides = sorted([a, b, c])
 
     # Check if the sum of the squares of the two smaller sides equals the square of the largest side
-    return sides[0]**2 + sides[1]**2 == sides[2]**2
+    return sides[0]**2 + sides[1]**2 == sides[2]**2 """
+
+""" 
+This is the new version of the right_angle_triangle function with the updated prompt: 
+    def right_angle_triangle(a, b, c):
+        '''
+        Given the lengths of the three sides of a triangle. Return True if the three
+        sides form a right-angled triangle also make sure that the values don't break the triangle inequality, return False otherwise.
+        A right-angled triangle is a triangle in which one angle is right angle or
+        90 degree.
+        Example:
+        right_angle_triangle(3, 4, 5) == True
+        right_angle_triangle(1, 2, 3) == False
+        '''
+"""
+import math
+def right_angle_triangle(a, b, c):
+    """
+    Given the lengths of the three sides of a triangle, return True if
+    they form a right-angled triangle (and satisfy triangle inequality),
+    False otherwise.
+    """
+    # Sort so that x ≤ y ≤ z
+    x, y, z = sorted((a, b, c))
+    # Sides must be positive and satisfy triangle inequality: x + y > z
+    if x <= 0 or x + y <= z:
+        return False
+    # Check for right angle: x^2 + y^2 == z^2 (allow small floating error)
+    return math.isclose(x*x + y*y, z*z)
 
 # do_algebra (task_id: HumanEval/160)
 def do_algebra(operator, operand):

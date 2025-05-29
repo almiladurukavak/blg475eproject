@@ -695,7 +695,11 @@ def test_Strongest_Extension():
 
     print("All test cases passed!")
 
-# right_angle_triangle (task_id: HumanEval/157)
+""" 
+
+This is the old version of the right_angle_triangle function.
+
+,# right_angle_triangle (task_id: HumanEval/157)
 def right_angle_triangle(a, b, c):
     '''
     Given the lengths of the three sides of a triangle. Return True if the three
@@ -708,19 +712,41 @@ def right_angle_triangle(a, b, c):
     '''
     # Sort the sides so that the largest side is always compared as the hypotenuse
     sides = sorted([a, b, c])
-    return sides[0]**2 + sides[1]**2 == sides[2]**2
-def test_right_angle_triangle():
-    # Test case 1: Known right-angled triangle
-    assert right_angle_triangle(3, 4, 5) == True, "Test case 1 failed"
+    return sides[0]**2 + sides[1]**2 == sides[2]**2 """
 
-    # Test case 2: Non-right-angled triangle
-    assert right_angle_triangle(1, 2, 3) == False, "Test case 2 failed"
+""" 
+    This is the new version of the right_angle_triangle function with the prompt:
 
-    # Test case 3: Another right-angled triangle
-    assert right_angle_triangle(5, 12, 13) == True, "Test case 3 failed"
+    def right_angle_triangle(a, b, c):
+        '''
+        Given the lengths of the three sides of a triangle. Return True if the three
+        sides form a right-angled triangle also make sure that the values don't break the triangle inequality, return False otherwise.
+        A right-angled triangle is a triangle in which one angle is right angle or
+        90 degree.
+        Example:
+        right_angle_triangle(3, 4, 5) == True
+        right_angle_triangle(1, 2, 3) == False
+        '''
 
-    print("All test cases passed!")
-# do_algebra (task_id: HumanEval/160)
+ """
+def right_angle_triangle(a, b, c):
+    # Check the triangle inequality theorem
+    sides = sorted([a, b, c])
+    if sides[0] + sides[1] <= sides[2]:
+        return False
+
+    # Check the Pythagorean theorem
+    if sides[0]**2 + sides[1]**2 == sides[2]**2:
+        return True
+    else:
+        return False
+
+
+"""  
+
+This is the old version of the do_algebra function.
+
+do_algebra (task_id: HumanEval/160)
 def do_algebra(operator, operand):
     # Initialize the result with the first operand
     result = operand[0]
@@ -742,24 +768,53 @@ def do_algebra(operator, operand):
         elif op == '**':
             result **= num
 
+    return result """
+
+""" 
+    This is the new version of the do_algebra function with the prompt:
+    def do_algebra(operator, operand):
+        
+        Given two lists operator, and operand. The first list has basic algebra operations, and
+        the second list is a list of integers. Use the two given lists to build the algebric
+        expression and return the evaluation of this expression.
+
+        The basic algebra operations:
+        Addition ( + )
+        Subtraction ( - )
+        Multiplication ( * )
+        Floor division ( // )
+        Exponentiation ( ** )
+
+        Example:
+        operator['+', '*', '-']
+        array = [2, 3, 4, 5]
+        result = 2 + 3 * 4 - 5
+        => result = 9
+
+        Note:
+        The length of operator list is equal to the length of operand list minus one.
+        Operand is a list of of non-negative integers.
+        Operator list has at least one operator, and operand list has at least two operands.
+
+
+        Please also think about the order of operations. 
+
+ """
+def do_algebra(operators, operands):
+    # Check if the lengths of the lists are compatible
+    if len(operators) != len(operands) - 1:
+        raise ValueError("The length of the operator list must be one less than the length of the operand list.")
+
+    # Start with the first operand
+    expression = str(operands[0])
+
+    # Iterate through the operators and operands to build the expression
+    for operator, operand in zip(operators, operands[1:]):
+        expression += f" {operator} {operand}"
+
+    # Evaluate the expression
+    result = eval(expression)
     return result
-def test_do_algebra():
-    # Test case 1: Basic arithmetic operations
-    operator1 = ['+', '-', '*']
-    operand1 = [2, 3, 4, 5]
-    assert do_algebra(operator1, operand1) == 2, "Test case 1 failed"
-
-    # Test case 2: Exponentiation and integer division
-    operator2 = ['**', '//']
-    operand2 = [2, 3, 4]
-    assert do_algebra(operator2, operand2) == 16, "Test case 2 failed"
-
-    # Test case 3: Mixed operations
-    operator3 = ['+', '*', '-']
-    operand3 = [1, 2, 3, 4]
-    assert do_algebra(operator3, operand3) == -1, "Test case 3 failed"
-
-    print("All test cases passed!")
 
 # decode_cyclic (task_id: HumanEval/38)
 def decode_cyclic(s: str) -> str:

@@ -574,6 +574,9 @@ def Strongest_Extension(class_name, extensions):
 
   return f"{class_name}.{strongest_extension}"
 
+""" 
+
+This is the old version of the right_angle_triangle function.
 
 # right_angle_triangle (task_id: HumanEval/157)
 def right_angle_triangle(a, b, c):
@@ -588,7 +591,38 @@ def right_angle_triangle(a, b, c):
   '''
   sides = sorted([a, b, c])
   return sides[0]**2 + sides[1]**2 == sides[2]**2
+ """
 
+""" 
+    This is the new version of the right_angle_triangle function with the prompt:
+
+    def right_angle_triangle(a, b, c):
+        '''
+        Given the lengths of the three sides of a triangle. Return True if the three
+        sides form a right-angled triangle also make sure that the values don't break the triangle inequality, return False otherwise.
+        A right-angled triangle is a triangle in which one angle is right angle or
+        90 degree.
+        Example:
+        right_angle_triangle(3, 4, 5) == True
+        right_angle_triangle(1, 2, 3) == False
+        '''
+ """
+def right_angle_triangle(a, b, c):
+    # Check triangle inequality
+    if not (a + b > c and a + c > b and b + c > a):
+        return False
+
+    # Check Pythagorean theorem
+    # Use float for squares to handle potential floating point side lengths,
+    # though for typical integer inputs, this won't be an issue.
+    # Use a small tolerance for floating point comparisons if necessary,
+    # but for typical integer inputs and their squares, direct comparison is fine.
+    if (a**2 + b**2 == c**2) or \
+    (a**2 + c**2 == b**2) or \
+    (b**2 + c**2 == a**2):
+        return True
+    else:
+        return False
 
 # do_algebra (task_id: HumanEval/160)
 def do_algebra(operator, operand):
