@@ -637,7 +637,7 @@ def test_integration_case_3():
 #MANUAL TESTS
 def test_integration_manual():
     assert circular_shift_encrypt_delete(0, 1, '0') == ("", True)
-    assert circular_shift_encrypt_delete(789, 1000, '') == ("978", False)
+    assert circular_shift_encrypt_delete(789, 1000, '') == ("987", False)
     assert circular_shift_encrypt_delete(121, 0, '12') == ("", True)
     assert circular_shift_encrypt_delete(1221, 1, '1') == ("22", True)
 
