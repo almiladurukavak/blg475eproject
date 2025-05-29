@@ -9,18 +9,77 @@ from collections import deque
 ### EASY LEVEL PROBLEMS ###
 
 # make_palindrome (task_id: HumanEval/10)
+
+
+# HUMANEVAL PROMPT RESULT
+
+# def is_palindrome(string: str) -> bool:
+#   return string == string[::-1]
+
+# def make_palindrome(string: str) -> str:
+#   n = len(string)
+#   if n == 0:
+#       return ""
+#   for i in range(n - 1, -1, -1):
+#       if is_palindrome(string[i:]):
+#           prefix_to_reverse = string[:i]
+#           return string + prefix_to_reverse[::-1]
+#   return string + string[:-1][::-1]
+
+
+# UPDATED PROMPT
+# def is_palindrome(string: str) -> bool:
+# """ Test if given string is a palindrome """
+# return string == string[::-1]
+
+# def make_palindrome(string: str) -> str:
+# """ Find the shortest palindrome that begins with a supplied string.
+# Algorithm idea is simple:
+# - Find the longest postfix of supplied string that is a palindrome.
+# - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.
+# >>> make_palindrome('')
+# ''
+# >>> make_palindrome('cat')
+# 'catac'
+# >>> make_palindrome('cata')
+# 'catac'
+# """
+# if is_palindrome condition is true, directly return the string
+#RESULTING FUNCTION
 def is_palindrome(string: str) -> bool:
-  return string == string[::-1]
+    """Test if given string is a palindrome"""
+    return string == string[::-1]
+
 
 def make_palindrome(string: str) -> str:
-  n = len(string)
-  if n == 0:
-      return ""
-  for i in range(n - 1, -1, -1):
-      if is_palindrome(string[i:]):
-          prefix_to_reverse = string[:i]
-          return string + prefix_to_reverse[::-1]
-  return string + string[:-1][::-1]
+    """
+    Find the shortest palindrome that begins with a supplied string.
+
+    Algorithm idea is simple:
+    - If the whole string is already a palindrome, return it.
+    - Find the longest suffix of the string that is a palindrome.
+    - Append to the end of the string the reverse of the prefix that comes before that suffix.
+
+    >>> make_palindrome('')
+    ''
+    >>> make_palindrome('cat')
+    'catac'
+    >>> make_palindrome('cata')
+    'catac'
+    >>> make_palindrome('aba')
+    'aba'
+    """
+    if is_palindrome(string):
+        return string
+
+    n = len(string)
+    for i in range(n - 1, -1, -1):
+        if is_palindrome(string[i:]):
+            prefix_to_reverse = string[:i]
+            return string + prefix_to_reverse[::-1]
+    return string + string[:-1][::-1]  # Fallback case
+
+
 
 # truncate_number (task_id: HumanEval/2)
 def truncate_number(number: float) -> float:
