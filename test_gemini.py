@@ -18,7 +18,7 @@ def test_make_palindrome():
 
 def test_truncate_number():
     assert truncate_number(3.14159) == 0.14159
-    assert truncate_number(-2.71828) == -0.71828
+    assert truncate_number(-2.71828) == 0.71828
     assert truncate_number(5.0) == 0.0
 ###############################################MANUAL TESTS##########################
     assert truncate_number(0.0) == 0.0

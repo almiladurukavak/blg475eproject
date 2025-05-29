@@ -82,8 +82,31 @@ def make_palindrome(string: str) -> str:
 
 
 # truncate_number (task_id: HumanEval/2)
+# def truncate_number(number: float) -> float:
+#     return number % 1.0
+
+#UPDATED PROMPT AND THE FUNCTION
 def truncate_number(number: float) -> float:
-    return number % 1.0
+    """
+    Given a positive floating point number, it can be decomposed into
+    an integer part (largest integer smaller than or equal to the given number)
+    and a decimal part (leftover part always smaller than 1).
+
+    Return the decimal part of the number, rounded to avoid floating-point errors
+    and always as a positive value.
+    
+    >>> truncate_number(3.5)
+    0.5
+    >>> truncate_number(2.999999999)
+    0.999999999
+    >>> truncate_number(5.0000000001)
+    0.0000000001
+    """
+    integer_part = int(number)
+    decimal_part = round(abs(number - integer_part), 10)
+    return decimal_part
+
+
 
 # sum_product (task_id: HumanEval/8)
 def sum_product(numbers: List[int]) -> Tuple[int, int]:

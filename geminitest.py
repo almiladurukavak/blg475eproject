@@ -20,9 +20,44 @@ def make_palindrome(string: str) -> str:
           return string + prefix_to_reverse[::-1]
   return string + string[:-1][::-1]
 
-#truncate_number (task_id: HumanEval/2)
+# #truncate_number (task_id: HumanEval/2)
+# def truncate_number(number: float) -> float:
+#   return number - int(number)
+
+import math
+
 def truncate_number(number: float) -> float:
-  return number - int(number)
+    """
+    Given a positive floating point number, it can be decomposed into
+    an integer part (largest integer smaller than or equal to the given number)
+    and a decimal part (leftover part always smaller than 1).
+
+    Return the decimal part of the number, rounded to avoid
+    floating-point errors and always as a positive value.
+    (Note: For negative inputs, the behavior is defined to return
+    the positive fractional part as if the absolute value was used,
+    or the negative fractional part if that's desired.)
+
+    >>> truncate_number(3.5)
+    0.5
+    >>> truncate_number(2.999999999)
+    0.999999999
+    >>> truncate_number(5.0000000001)
+    0.0000000001
+    >>> truncate_number(-2.71828) # If the expectation is -0.71828
+    -0.71828
+    """
+    # If the intent for negative numbers is to simply remove the integer part
+    # and keep the fractional part with its original sign, use this:
+    if number < 0:
+        # For negative numbers, fmod gives the fractional part with the sign of the number
+        decimal_part = math.fmod(number, 1.0)
+    else:
+        integer_part = math.floor(number)
+        decimal_part = number - integer_part
+
+    # Round to a reasonable precision to mitigate floating-point errors.
+    return abs(round(decimal_part, 9))
 
 #sum_product (task_id: HumanEval/8)
 

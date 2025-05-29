@@ -83,23 +83,52 @@ def make_palindrome(string: str) -> str:
 
 
 # truncate_number (task_id: HumanEval/2)
+# def truncate_number(number: float) -> float:
+#     """
+#     Given a positive floating point number, it can be decomposed into
+#     an integer part (largest integer smaller than given number) and decimals
+#     (leftover part always smaller than 1).
+
+#     Return the decimal part of the number.
+#     >>> truncate_number(3.5)
+#     0.5
+#     """
+#     # Ensure the number is positive
+#     if number < 0:
+#         raise ValueError("The number must be positive")
+
+#     # Extract the decimal part
+#     decimal_part = number - int(number)
+#     return decimal_part
+
+#UPDATED PROMPT AND OUTPUT
+
+import math
+
+
 def truncate_number(number: float) -> float:
     """
     Given a positive floating point number, it can be decomposed into
-    an integer part (largest integer smaller than given number) and decimals
-    (leftover part always smaller than 1).
+    an integer part (largest integer smaller than or equal to the given number)
+    and a decimal part (leftover part always smaller than 1).
 
-    Return the decimal part of the number.
+    Return the decimal part of the number, rounded to avoid floating-point errors
+    and always as a positive value.
+
     >>> truncate_number(3.5)
     0.5
+    >>> truncate_number(2.999999999)
+    0.999999999
+    >>> truncate_number(5.0000000001)
+    0.0000000001
+    >>> truncate_number(-333.01)
+    0.01
     """
-    # Ensure the number is positive
-    if number < 0:
-        raise ValueError("The number must be positive")
+    integer_part = math.floor(abs(number))
+    decimal_part = abs(number) - integer_part
+    return round(decimal_part, 10)  # Rounding to 10 decimal places to avoid floating-point errors
 
-    # Extract the decimal part
-    decimal_part = number - int(number)
-    return decimal_part
+
 
 # sum_product (task_id: HumanEval/8)
 from typing import List, Tuple
